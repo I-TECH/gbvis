@@ -1,0 +1,322 @@
+/*********************************************************************
+* Author: Benard Koech
+* Email: benardkkoech@gmail.com.
+* Gender Base violence Information system
+* Development 22 January 2015
+***********************************************************************/
+
+html{
+color: #000;
+background: none repeat scroll 0% 0% #FFF;
+}
+body{
+    font-family: "Helvetica Neue",Helvetica,Arial,Verdana,Geneva,sans-serif;
+    color: #333;
+}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, address {
+    margin: 0px;
+    padding: 0px;
+}
+#gbiv-wrapper{
+font-size: 108%;
+line-height: 2;
+min-height: 768px;
+min-width: 1024px;
+width: 100%;
+height:100%
+}
+/************************************************Start Header Section*******************************************/
+#header{
+ width:99%; 
+  margin: 0px 0px; 
+  padding: 5px;
+  background:#81519C; 
+  border-bottom:1px solid #c6c2c1; 
+  height: 75px;
+  display: inline-flex;
+}
+.logo{float:left;width:15%; height:100%; min-width:168px;}
+#header .menuLinks{float: left; width:85%;  }
+#header .menuLinks .top-menuLinks{float:left;width:98%; height:70%; display: inline-flex; }
+#header .menuLinks .top-menuLinks .system-title{float:left;width:60%; height:100%;  }
+#header .menuLinks .top-menuLinks .user_status_nav{float:right;width:40%; height:100%; }
+#header .menuLinks .bottom-menuLinks{loat:left;width:98%;  height:30%; }
+.title-name{text-size:18px; color:white; font-family: TStar-Bol width:25%;}
+.login-status-sec{float:right;}
+
+/************************************************END Header*******************************************/
+
+/*Login Wrapper*/
+.login_main_wrapper
+{
+	width:450px;
+	margin: 0 auto;
+	border: solid 1px #cbcbcb;
+	 background-color: #FFF;
+	 box-shadow: 0 0 15px #cbcbcb;
+	-moz-box-shadow: 0 0 15px #cbcbcb;
+	-webkit-box-shadow: 0 0 15px #cbcbcb;
+	-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;
+	padding:10px;
+	padding-left:20px;
+	padding-right:20px;
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:11px;
+}
+
+/******END Login Section***********/
+#gbvis-main{
+overflow: hidden;
+width:100%;
+height:80%;
+min-height:600px;
+display:block;
+}
+
+/***************sidebar */
+#sidebar{
+display:block;
+width:15%;
+float:left;
+background: none repeat scroll 0% 0% #EEE;
+height:100%;
+min-height: 650px;
+}
+.sidebar-nav{
+margin-left:15px;
+}
+.sidebar-nav li{
+line-height: 35px;
+}
+.sidebar-nav ul li{
+list-style:none;
+font-family:Verdana, Geneva, sans-serif; font-size:15px; color:#81519C;
+
+}
+.sidebar-nav a{
+text-decoration:none;
+}
+.sidebar-nav  ul li:hover {
+    color: #FFF;
+    background-color: #DDCF0D;
+    border-radius: 1px;
+    width: 90%;
+}
+.sidebar-nav ul li ul li{
+padding-left:15px;
+list-style:none;
+font-family:Verdana, Geneva, sans-serif; font-size:15px; color:#81519C;
+margin-left:5px;
+}
+
+/*//END of sidebar*/
+
+/**************************************************************content Area*/
+
+#main-content{
+display:block;
+background-color: #FFF;
+/*padding-left: 3%;
+padding-bottom: 3%;
+padding-top: 1%;*/
+width:85%;
+height:100%;
+float:left;
+min-height: 628px;
+}
+#bread-crumbs{
+background: none repeat scroll 0px center transparent;
+width:100%;
+height:5%;
+min-height:40px;
+}
+/* content body*/
+#content-body{
+width:100%;
+height:88%;
+min-height:540px;
+overflow-y: scroll;
+}
+.page-title{
+font-family:Verdana, Geneva, sans-serif; font-size:15px; color:#81519C;
+}
+/* Profile */
+.profile-data{
+width:98%; font-family:Verdana, Geneva, sans-serif; font-size:12px; border:5px solid #F1F1F1; margin-left:5px;
+height: 100%;
+}
+.forms-section{
+width:95%; font-family:Verdana, Geneva, sans-serif; font-size:12px; border:5px solid #F1F1F1; margin-left:10px;padding-left:10px;
+height: 100%;
+overflow-y: scroll;
+margin-left:10px;
+}
+.text-label{
+width:300px;float:left;
+width:12%;
+}
+.text-input{
+width:60%;float:left;
+}
+.form_text-input{
+width:40%;float:left;
+}
+.table-input{
+width:300px;float:left;
+width:100%;
+}
+.table-data-input{
+width:50px;float:left;
+}
+.data-label {
+min-width:120px; width:30%; padding-top:5px;float:left; font-size:14px;
+}
+
+/*Input Boxes Style*/
+.form_textbox_inputs {min-width:150px; width:67%;height:20px;font-family:Verdana, Geneva, sans-serif; font-size:12px;padding:7px; padding-left:10px; padding-right:10px;border: 1px solid #99e;outline:none;border-radius: 2px;-moz-border-radius: 2px;-webkit-border-radius:2px; line-height:20px;}
+.form_textbox_inputs:focus {outline:none;border: 1px solid #99c;box-shadow: 0 0 10px #6AB5FF;-moz-box-shadow: 0 0 10px #6AB5FF;-webkit-box-shadow: 0 0 10px #6AB5FF;}
+
+.gbvis_textAreaBoxInputs {min-width:150px; width:73%;height:20px;font-family:Verdana, Geneva, sans-serif; font-size:12px;padding:7px; padding-left:10px; padding-right:10px;border: 1px solid #99e;outline:none;border-radius: 2px;-moz-border-radius: 2px;-webkit-border-radius:2px; line-height:20px;}
+.gbvis_textAreaBoxInputs:focus {outline:none;border: 1px solid #99c;box-shadow: 0 0 10px #6AB5FF;-moz-box-shadow: 0 0 10px #6AB5FF;-webkit-box-shadow: 0 0 10px #6AB5FF;}
+
+.gbvis_select {min-width:220px; width:auto;height:30px;font-family:Verdana, Geneva, sans-serif; font-size:12px;padding:6px; padding-left:10px; padding-right:10px;border: 1px solid #99e;outline:none;border-radius: 2px;-moz-border-radius: 2px;-webkit-border-radius:2px; line-height:20px;}
+.gbvis_select :focus {outline:none;border: 1px solid #99c;box-shadow: 0 0 10px #6AB5FF;-moz-box-shadow: 0 0 10px #6AB5FF;-webkit-box-shadow: 0 0 10px #6AB5FF;}
+
+
+.gbvis_smallBoxInputs {min-width:60px; width:10%;height:12px;font-family:Verdana, Geneva, sans-serif; font-size:12px;padding:6px; border: 1px solid #99e;outline:none;border-radius: 2px;-moz-border-radius: 2px;-webkit-border-radius:2px; line-height:20px;}
+.gbvis_smallBoxInputs:focus {outline:none;border: 1px solid #99c;box-shadow: 0 0 5px #6AB5FF;-moz-box-shadow: 0 0 5px #6AB5FF;-webkit-box-shadow: 0 0 5px #6AB5FF;}
+
+
+.gbvis_mediumBoxInputs {min-width:202px; width:10%;height:18px;font-family:Verdana, Geneva, sans-serif; font-size:12px;padding:6px; border: 1px solid #99e;outline:none;border-radius: 2px;-moz-border-radius: 2px;-webkit-border-radius:2px; line-height:20px;}
+.gbvis_mediumBoxInputs:focus {outline:none;border: 1px solid #99c;box-shadow: 0 0 5px #6AB5FF;-moz-box-shadow: 0 0 5px #6AB5FF;-webkit-box-shadow: 0 0 5px #6AB5FF;}
+
+/*Error Message Style*/
+.info { border: 1px solid #999; margin-top:0px; padding:10px 15px 10px 15px; font: bold 12px verdana;-moz-box-shadow: 0 0 5px #888; -webkit-box-shadow: 0 0 5px #888;box-shadow: 0 0 5px #888;text-shadow: 2px 2px 2px #ccc;-webkit-border-radius: 10px;-moz-border-radius: 10px;border-radius: 10px;font-family:Verdana, Geneva, sans-serif; font-size:11px; line-height:20px;font-weight:normal;color: white;background: #3E1F60;;}
+
+.gbvis-table_container{
+width:740px; font-family:Verdana, Geneva, sans-serif; font-size:12px; border:5px solid #F1F1F1;padding: 2px 5px 5px 10px;
+}
+/* Buttons*/
+.gbvis_general_button 
+{
+ background-color: #E5C93A;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #E5C93A), color-stop(100%, #E5C93A));
+  background-image: -webkit-linear-gradient(top, #E5C93A, #DFD892);
+  background-image: -moz-linear-gradient(top, #E5C93A, #E5C93A);
+  background-image: -ms-linear-gradient(top, #E5C93A, #E5C93A);
+  background-image: -o-linear-gradient(top, #E5C93A, #E5C93A);
+  background-image: linear-gradient(top, #E5C93A, #E5C93A);
+  border: 2px solid #DFD892; box-shadow: 0 2px 3px #DFD892; -moz-box-shadow: 0 2px 3px #DFD892; -webkit-box-shadow: 0 2px 3px #DFD892;
+  -webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;
+  color: #81519C;
+  font-family:Verdana, Geneva, sans-serif;
+  font-size:14px;
+  text-align: center;
+  min-width: 70px;
+  width: 32%;
+  padding:9px;
+  padding-left:13px; padding-right:13px;padding-bottom:7px;
+  text-decoration:none;
+  float:left;
+
+}
+.gbvis_general_button:hover 
+{
+    background-color:#81519C;
+    background-image: -webkit-linear-gradient(top,#81519C, #81519C);
+    background-image: -moz-linear-gradient(top,#81519C, #81519C);
+    background-image: -ms-linear-gradient(top,#81519C, #81519C);
+    background-image: -o-linear-gradient(top,#81519C, #81519C);
+    background-image: linear-gradient(top,#81519C, #81519C);
+    box-shadow: 0 2px 3px #81519C; border: 2px solid  #81519C;
+	color:white;
+	-moz-box-shadow: 0 2px 3px #81519C;
+	-webkit-box-shadow: 0 2px 3px #81519C;
+	-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;
+    cursor: pointer; 
+}
+/*END of content area*/
+
+/* forms section*/
+.forms-table{
+  
+  margin:8px 20px 16px 30px; background:#f8f8f8; border:1px solid #eee; padding:10px;
+  
+}
+.table-td-label{
+  
+  font:bold 12px tahoma, arial, sans-serif; text-align:right; border-bottom:1px solid #eee; padding:5px 10px 5px 0px; border-right:1px solid #eee;
+}
+.table-td-input{
+  
+border-bottom:1px solid #eee; padding:5px;  
+  
+}
+
+
+
+/*END of main Content*/
+/*gbvis_footer*/
+#gbvis_footer{
+    text-align: center;
+    height:10%;
+	background: none repeat scroll 0% 0% #3E1F60;
+	width:100%;
+	min-height:68px;
+	
+}
+.gbvis_footer-left{
+width:44%;
+float:left;
+
+}
+.logo img{
+  height:70px;
+}
+.gbvis_footer-center{
+width:30%;
+float:left;
+
+}
+.gbvis_footer-right{
+width:25%;
+float:left;
+
+}
+#id_search {
+  margin-left: 15px;
+  font-family: "Prensa", Helvetica, Arial, sans-serif;
+  border: 1px solid #ccc;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+  color: #555;
+  border: 1px solid #AAAAAA;
+  width: 200px;
+  font-size: 1.2em;
+  line-height: 20px;
+  padding: 4px;
+  outline: none;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -o-border-radius: 2px;
+  -ms-border-radius: 2px;
+  border-radius: 2px;
+}
+.link-btn {
+  background-color:#81519C;
+  -moz-border-radius:7px;
+  -webkit-border-radius:7px;
+  border-radius:3px;
+  border:1px solid #81519C;
+  display:inline-block;
+  cursor:pointer;
+  color:#ffffff;
+  font-family:Arial;
+  font-size:14px;
+  padding:1px 10px;
+  text-decoration:none;
+  text-shadow:0px 1px 0px #81519C;
+  margin-bottom: 0px;
+  margin-left: 20px;
+  /*float: right; */
+}

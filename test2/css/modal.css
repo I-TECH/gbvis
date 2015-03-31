@@ -1,0 +1,93 @@
+/*modal dialog*/
+.modalDialog,.modalDialog2,.modalDialog4 {
+  position: fixed;
+  padding-top: -5px;
+  margin-top: -20px;
+  font-family: Arial, Helvetica, sans-serif;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(160,128,111,0.8);
+  z-index: 99999;
+  opacity:0;
+  -webkit-transition: opacity 400ms ease-in;
+  -moz-transition: opacity 400ms ease-in;
+  transition: opacity 400ms ease-in;
+  pointer-events: none;
+}
+
+.modalDialog:target,.modalDialogSmall:target,.modalDialog3:target,.modalDialog4:target {
+  opacity:1;
+  pointer-events: auto;
+}
+
+.modalDialog > div,.modalDialog2 > div,.modalDialog3 > div,.modalDialog4 > div {
+  width: 60%;
+  position: relative;
+  margin: 3% auto;
+  padding: 30px 30px 30px 30px ;
+  border-radius: 5px;
+  background: #F3F5F2;
+/*  background: -moz-linear-gradient(#fff, #999);
+  background: -webkit-linear-gradient(#fff, #999);
+  background: -o-linear-gradient(#fff, #999);*/
+}
+.modalDialogSmall > div,.modalDialogSmall2 > div {
+  width: 70%;
+  position: relative;
+  margin: 7% auto;
+  padding: 30px 30px 30px 30px ;
+  border-radius: 5px;
+  background: #F3F5F2;
+/*  background: -moz-linear-gradient(#fff, #999);
+  background: -webkit-linear-gradient(#fff, #999);
+  background: -o-linear-gradient(#fff, #999);*/
+}
+
+
+.close {
+  background: #ff2233;
+  color: #FFFFFF;
+  line-height: 25px;
+  position: absolute;
+  right: -12px;
+  text-align: center;
+  top: -10px;
+  width: 24px;
+  text-decoration: none;
+  font-weight: bold;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  border-radius: 12px;
+  border: 1px solid #555;
+/*  -moz-box-shadow: 1px 1px 3px #000;
+  -webkit-box-shadow: 1px 1px 3px #000;
+  box-shadow: 1px 1px 3px #000;*/
+}
+
+.close:hover { background: #00d9ff; }
+
+/*form*/
+:invalid { 
+  border-color: gray;
+}
+
+:required {
+  border-color: #88a;
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
+  -moz-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
+  -o-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
+  -ms-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
+  box-shadow: 0 0 5px rgba(0, 0, 255, .5);
+}
+
+form {
+  /*width:300px;
+  margin: 0 auto;*/
+}
+#formss{
+  /*	margin-left: 30px;*/
+  margin: 0 auto;
+  width: 350px;
+}
