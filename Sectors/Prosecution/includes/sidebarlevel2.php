@@ -34,7 +34,7 @@
    <li><a href=".../../dashboard.php" style="text-decoration:none;">Admin Panel</a></li>
     <li><a href=".../../users_accounts.php" style="text-decoration:none;">Users Accounts</a></li>
 	<li><a href="../../settings.php" style="text-decoration:none;">Settings</a></li>
-	<li><a href="../aggregates.php" style="text-decoration:none;">Agregates</a></li>
+	<li><a href="../aggregates.php" style="text-decoration:none;">Aggregates</a></li>
      <li><a href="../indicators.php" style="text-decoration:none;">Indicators</a></li>
   <li><a href="../import_files.php" style="text-decoration:none;">Import</a></li>
 	  <li><a href="../../../Reports/" style="text-decoration:none;">Reports</a></li>
@@ -48,7 +48,7 @@
 	<h3 style="text-size:18px;  font-family: TStar-Bol">Judiciary Admin</h3>
 	<ul> 
    <li><a href="../../index.php" style="text-decoration:none;">Home</a><li>
-    <li><a href="../aggregates.php" style="text-decoration:none;">Agregates</a></li>
+    <li><a href="../aggregates.php" style="text-decoration:none;">Aggregates</a></li>
      <li><a href="../indicators.php" style="text-decoration:none;">Indicators</a></li>
   <li><a href="../import_files.php" style="text-decoration:none;">Import</a></li>
 	  <li><a href="../../../Reports/" style="text-decoration:none;">Reports</a></li>

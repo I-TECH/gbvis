@@ -73,7 +73,7 @@ if(isset($_POST['submit-form'])) {
 		);
 	    $id = $db->insert($data, 'judiciary_aggregates');
 	  
-	   $msg .= "Agregates added successfully <br/> \n\r";
+	   $msg .= "Aggregates added successfully <br/> \n\r";
 	}
 
 }

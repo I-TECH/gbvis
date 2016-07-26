@@ -44,26 +44,24 @@ $message = "";
                       }
 //If the form wasn't submitted, or didn't validate
 //then we show the registration form again
-include "includes/header.php"; 
+include "includes/Dash_header.php"; //TA:60:1
+include "includes/topbar.php"; //TA:60:1
 ?>
-	  <div id="sidebar">
-	  <center><h3 style="text-size:18px;  font-family: TStar-Bol"></h3></center>
+
+<div id="sidebar">  
 	<div class="sidebar-nav">
 	<?php
-	  include "includes/sidebar.php"; 
+ 	  include "includes/sidebar.php"; 
 	  ?>
 	</div> 
 	  </div> 
-	  <div id="main-content">
-	    <div id="bread-crumbs">
-	      <!--breadcrumbs-->
-	    </div>
+	  <div id="main-content_with_side_bar">
+	    
         <div id="content-body">
-		<center><h3 class="page-title">My Profile</h3></center>
-	       <hr size="1" color="#CCCCCC">
+		<h3 class="page-title">My Profile</h3>
+	      
 		   <div class="profile-data" align="left">
-	<?php echo $message; ?>
-
+	
 	<form action="" method="post">
 	
       <div class="labelsDiv">First name: <?php echo $firstname; ?></div><br clear="all">
@@ -71,7 +69,7 @@ include "includes/header.php";
 	<div class="labelsDiv">Username: <?php echo $username; ?></div><br clear="all">
 	<div class="labelsDiv">E-Mail:<?php echo $email; ?></div>
 	<br clear="all">
-	<div class="labelsDiv">user Group: <?php echo $group_name; ?></div><br clear="all">
+	<div class="labelsDiv">User Group: <?php echo $group_name; ?></div><br clear="all">
 	<div class="labelsDiv">Sector:<?php echo $sector_name; ?></div><br clear="all">
 	<div class="">Mobile phone:<?php echo $mobile_phone; ?></div><br clear="all">
 	
@@ -80,8 +78,13 @@ include "includes/header.php";
 	</form>
 </div><br clear="all">
 </center>
-	    </div> 		
-	 	
+	    <br clear="all">
+
+</div><br clear="all">
+
+	    </div> 	
+	    
+
  <?php
  include "includes/footer.php"; 
  ?>

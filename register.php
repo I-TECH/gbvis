@@ -77,9 +77,11 @@ if(isset($_POST['submit-form'])) {
 
 }
 
-include "includes/login_header.php";
+//include "includes/login_header.php";
 //If the form wasn't submitted, or didn't validate
 //then we show the registration form again
+include "includes/Dash_header.php"; //TA:60:1
+include "includes/topbar.php"; //TA:60:1
 ?>
 	  <center>
 <div class="login_wrapper">
@@ -134,5 +136,9 @@ Last Name<input type="text" name="lastname" id="lastname" value="<?php echo $las
 
 <p style="margin-bottom:180px;">&nbsp;</p>
 </center>
+
+<?php
+ include "includes/footer.php"; 
+ ?>
 </body>
 </html>

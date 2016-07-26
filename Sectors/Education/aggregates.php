@@ -74,7 +74,7 @@ require_once('../../classes/dropdown.class.php');
 			  <th align="left"><b>Indicator</b></th>
 			  <th align="left"><b>County</b></th>
 			  <th align="left"><b>Survey Period</b></th>
-			    <th align="left"><b>Agregates</b></th>
+			    <th align="left"><b>Aggregates</b></th>
 			     <!--<th align="left"><b>Date</b></th>-->
                           <th align="left"><b><center>View</center></b></th>
                           <th align="left"><b><center>Edit</center></b></th>

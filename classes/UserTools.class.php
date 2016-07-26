@@ -28,6 +28,7 @@ class UserTools {
 		}
 	}
 	
+	
 	//Log the user out. Destroy the session variables.
 	public function logout() {
 		unset($_SESSION["user"]);
@@ -46,6 +47,18 @@ class UserTools {
 	   	}else{
 	   		return true;
 		}
+	}
+	
+	//Check to see if a username exists with email.
+	//This is called during registration to make sure all user names are unique.
+	public function checkEmailExists($email) {
+	    $result = mysql_query("select id from users where email='$email'");
+	    if(mysql_num_rows($result) == 0)
+	    {
+	        return false;
+	    }else{
+	        return true;
+	    }
 	}
 	
 	//get a user
