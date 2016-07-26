@@ -29,7 +29,9 @@ $error = "";
 //check to see that the form has been submitted
 
 	
-include "includes/header.php"; 
+//include "includes/header.php"; 
+include "includes/Dash_header.php"; 
+include "includes/topbar.php"; //TA:60:1
 include_once('includes/connection.php');
 include_once('includes/functions.php');
 

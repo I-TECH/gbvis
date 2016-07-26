@@ -7,7 +7,7 @@ require_once 'includes/global.inc.php';
 
 
  //check to see if they're logged in
-if(isset($_SESSION['logged_in'])) {
+// if(isset($_SESSION['logged_in'])) {
 
 //get the user object from the session
 $user = unserialize($_SESSION['user']);
@@ -166,10 +166,10 @@ Tel: 0203213199 Email: <a href="mailto:sgbvis@ngeckenya.org">sgbvis@ngeckenya.or
 	 	
  <?php
  include "includes/footer.php"; 
-	}else{
+/*	}else{
 	//Redirect user back to login page if there is no valid session created
 	header("Location: login.php");
-}
+}*/
 ?>
 
 

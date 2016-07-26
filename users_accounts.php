@@ -89,7 +89,7 @@ include "includes/topbar.php"; // TA:60:1
           $startpoint = ($page * $per_page) - $per_page;
           
 
-       $statement = "`users` WHERE user_group!=1 ORDER BY id ASC"; // Change `records` according to your table name.
+       $statement = "`users` ORDER BY firstname ASC"; // Change `records` according to your table name.
         
        //$where ="'sector_id'= $user_sector_name";
   

@@ -146,17 +146,41 @@ function getReportBySector(){
 	  <div id="main-content_with_side_bar">
 	    
         <div id="content-body">
-		<center><h2 class="page-title">Welcome to the National Sexual Gender Violence Information System (GBVIS)</h2></center> <!-- TA:60:1 -->
+		<center><h2 class="page-title">Welcome to the National Sexual Gender Based Violence Information System (SGBVIS)</h2></center> <!-- TA:60:1 -->
 	      <hr size="1" color="#fff">
-	        
+	        <div class="container">
+	        	<h3>Overview</h3>
+<p>	        	
+Gender Based Violence is a human rights violation, developmental concern and a public health
+problem. According to the World Health Organization (WHO), GBV is “Any harmful act that is
+perpetrated against a person’s will and that is based on socially ascribed (gender) differences
+between males and females”. GBV includes acts that inflict physical, mental or sexual harm or
+suffering; the threat of such acts and coercion and other deprivations of liberty. The term
+‘Gender Based Violence’ is often used interchangeably with (but not synonymous to) the term
+‘violence against women’. The different forms of GBV include physical, sexual, emotional
+(psychological) and economic violence and harmful traditional practices.
+</p>
+<br/>
+<p>
+Despite existing data on GBV in Kenya, reporting has been a challenge due to underlying
+infrastructural impediments. This system was created to fill the gap and ease the burden of
+reporting SGBV cases.
+</p>
+<br/>
+<p>
+This system is an initial step towards reporting all GBV cases in Kenya to the national level for
+monitoring and begins by focusing on Sexual Gender Based Violence (SGBV). It collates data
+from various sectors including: Education, Health, Judiciary, Police and Prosecution.
+</p>
+	        </div>
 		   <div class="profile-data" align="left">
 		   
 		   <!--  <div id="mapchart" style="width: 650px; height: 500px;"></div>-->
 
 		   
-		   <div id="piechart" style="width: 650px; height: 500px;"></div>
+		   <!-- <div id="piechart" style="width: 650px; height: 500px;"></div>
 		   <div id='health_chart'></div>
-		   <div id='police_chart'></div>
+		   <div id='police_chart'></div> -->
 				   
           </div>     
        

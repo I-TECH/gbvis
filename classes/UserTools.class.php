@@ -60,6 +60,17 @@ class UserTools {
 	        return true;
 	    }
 	}
+	//Check to see if a token exists.
+	//This is called during password recovery to ensure the password recovery token exists.
+	public function checkPasswordRecoveryTokenExists($token) {
+		$result = mysql_query("select id from users where hash_token='$token'");
+    	if(mysql_num_rows($result) == 0)
+    	{
+			return false;
+	   	}else{
+	   		return true;
+		}
+	}
 	
 	//get a user
 	//returns a User object. Takes the users id as an input
@@ -104,6 +115,30 @@ class UserTools {
 		
 		return true;
 		}
+	}
+	//enter user reset password hash token
+	public function set_reset_password_token($email, $username, $token)
+	{
+	       
+		$result = mysql_query("UPDATE users set hash_token ='$token' where email='$email' and username = '$username'");
+	    if($result)
+	    {
+	        return true;
+	    }else{
+	        return false;
+	    }
+	}
+	//enter user reset password hash token
+	public function update_user_password($token, $password)
+	{
+	    $password = md5($password);   
+		$result = mysql_query("UPDATE users set password ='$password' where hash_token='$token'");
+	    if($result)
+	    {
+	        return true;
+	    }else{
+	        return false;
+	    }
 	}
 	///Sector
 	

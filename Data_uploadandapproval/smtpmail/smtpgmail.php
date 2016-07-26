@@ -13,7 +13,7 @@ $mail->Password = "3271koech";
 $mail->SetFrom("benardkkoech@gmail.com");
 $mail->Subject = "Your Gmail SMTP Mail";
 $mail->Body = "<b>Hi, your first SMTP mail via gmail server has been received. Great Job!.. <br/><br/>by <a href='http://www.asif18.com/7/php/send-mails-using-smtp-in-php-by-gmail-server-or-own-domain-server/'>Asif18</a></b>";
-$mail->AddAddress("benardkkoech@gmail.com");
+$mail->AddAddress("norbertglen7@gmail.com");
  if(!$mail->Send()){
 	echo "Mailer Error: " . $mail->ErrorInfo;
 }

@@ -62,13 +62,15 @@ include "includes/Dash_header.php"; //TA:60:1
 <div style="width:450px;float:left;" align="center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <!-- TA:60:1-->
-<a href="register.php" style="text-decoration:none;" class="link">Create Account</a>
+<a href="register.php" class="label label-default" style="text-decoration:none;" class="link">Create Account</a>
+<a href="password_request.php" class="label label-warning" style="text-decoration:none;" class="link">Forgot Password?</a>
+<a href="help.php" class="label label-success" style="text-decoration:none;" class="link">Need Help?</a>
 </div><br clear="all"> 
 
 
 
 </div>
-<a href="" style="text-decoration:none;pointer-events: none;" class="link">Forgot password? Contact the NGEC SGBVIS Help Line:<br> 
+<a href="" style="text-decoration:none;pointer-events: none;" class="link">Contact the NGEC SGBVIS Help Line:<br> 
 Tel: 0203213199  Email: sgbvis@ngeckenya.org </a>
 </center>
 <!-- Code Ends -->

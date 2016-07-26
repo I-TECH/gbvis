@@ -9,7 +9,9 @@ if(isset($_SESSION['logged_in'])) {
 
 //get the user object from the session
 $user = unserialize($_SESSION['user']);
-include "../includes/headerlevel2.php"; 
+//include "../includes/headerlevel2.php"; 
+include "../includes/Dash_header.php"; 
+include "../includes/topbar.php"; //TA:60:1
 ?>
  <div id="sidebar">
 	  <center><h3 style="text-size:18px;  font-family: TStar-Bol"></h3></center>
