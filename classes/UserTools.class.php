@@ -132,7 +132,7 @@ class UserTools {
 	public function update_user_password($token, $password)
 	{
 	    $password = md5($password);   
-		$result = mysql_query("UPDATE users set password ='$password' where hash_token='$token'");
+		$result = mysql_query("UPDATE users set password ='$password', hash_token = '' where hash_token='$token'");
 	    if($result)
 	    {
 	        return true;

@@ -5,9 +5,9 @@
     $current_page = "Login";
 	
 require_once 'includes/global.inc.php';
-$error = "";
 $token = $_GET['token'];
-
+$userTools = new UserTools();
+$error = ($userTools->checkPasswordRecoveryTokenExists($token)) ? "" : "Invalid token" ;
 //check to see if they've submitted the login form
 if(isset($_POST['password_change'])) { 
 
@@ -17,12 +17,12 @@ if(isset($_POST['password_change'])) {
 	if($token == ""){
 	    $error = "Invalid token";
 	}else{
-	    $userTools = new UserTools();
+	    
 	    if($userTools->checkPasswordRecoveryTokenExists($token)){
 	    $userTools->update_user_password($token, $new_password);
 	    header("Location: login.php");
 	    }else{
-	       $error = "Password change failed";
+	       $error = "Password change failed. The token may be expired";
 	        
 	    }
 	}
@@ -31,11 +31,11 @@ include "includes/Dash_header.php"; //TA:60:1
 ?> 
 <script type="text/javascript">
 	function validate(){
-		if(document.forms["form"]["password"].value == ''){
+		if($('#password').val() == ''){
 		alert("Password is required.");
 		return false;
 	}
-	if(document.forms["form"]["password"].value != document.forms["form"]["password-confirm"].value){
+	if($('#password').val() != $('#password-confirm').val()){
 		alert("Passwords do not match.");
 		return false;
 	}
@@ -47,15 +47,17 @@ include "includes/Dash_header.php"; //TA:60:1
 <div class="login_wrapper">
 
 <br clear="all">
-<form method="post" onsubmit="return validate();" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 <div style="width:450px;float:left; color:red " align="left"><?php echo $error; ?></div>
 <div style="width:450px;float:left; color:green " align="left"><?php echo $info; ?></div>
-<br clear="all">
+<?php if ($userTools->checkPasswordRecoveryTokenExists($token)) {
+	# code...
+?>
+<form method="post" onsubmit="return validate();" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 
 
 <h4 style="margin-top:0px;">Please provide us with following information</h4><br />
 
-<div class="labelsDiv">Password:</div>
+<div class="labelsDiv">New Password:</div>
 <div class="inputsDiv"><input type="password" name="password" id="password" value="" class="textInputs"></div><br clear="all"><br clear="all">
 <div class="labelsDiv">Confirm Password:</div>
 <div class="inputsDiv"><input type="password" name="password-confirm" id="password-confirm" value="" class="textInputs"></div><br clear="all"><br clear="all">
@@ -68,6 +70,7 @@ include "includes/Dash_header.php"; //TA:60:1
 
 </div>
 </form>
+<?php } ?>
 <br clear="all"><br clear="all">
  
 

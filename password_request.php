@@ -40,8 +40,8 @@ if(isset($_POST['password_request'])) {
 		$mail->Password = "ldirdkmehmfdatgw";
 		$mail->SetFrom("sgbvis@ngeckenya.org");
 		$mail->Subject = "KenyaSGBVIS Account Password Recovery";
-		$mail->Body = "<b>Hi, You recently requested to change your KenyaSGBVIS account password. Please follow the following link to reset password. <br/><br/> <a href='http://localhost/KenyaGBV/password_change.php?token=".$token."'>Click here</a></b>";
-		$mail->AddAddress("norbertglen7@gmail.com");
+		$mail->Body = "<b>Hi, You recently requested to change your KenyaSGBVIS account password. Please follow the following link to reset password. <br/><br/> <a href='http://localhost/gbvis/password_change.php?token=".$token."'>Click here</a></b>";
+		$mail->AddAddress($email);
 	if(!$mail->Send()){
 		$msg = "<div class='alert alert-warning'>
      <button class='close' data-dismiss='alert'>&times;</button>
@@ -58,7 +58,7 @@ if(isset($_POST['password_request'])) {
 	        //header("Location: index.php");
 	    }else{
 	       // header("Location: index.php");
-	        $to = "norbertglen7@yahoo.com";
+	        $to = $email;
 	        $subject = "Password Recovery Attempt";
 	        $txt = "There has been a password recovery attempt by".$email;
 	        $headers = "MIME-Version: 1.0" . "\r\n";
