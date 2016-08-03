@@ -1096,7 +1096,7 @@ function dataTableToCSV(dataTable_arg) {
 
       </script>
 
-<div id="main-content">
+<div id="main-content_with_side_bar">
 
     <div id='table1_csv' style='display: none'></div>
 	<div id='image1' style='display: none'></div>

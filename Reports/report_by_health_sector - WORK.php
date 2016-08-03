@@ -2399,7 +2399,7 @@ echo "[{v:'" . $key . "'}, {v:" . $urows['MALE_MORE18'] . "}, {v:" . $urows['FEM
 
       </script>
 
-<div id="main-content">
+<div id="main-content_with_side_bar">
 
     <div id='table1_csv' style='display: none'></div>
     <div id='table1_csv1' style='display: none'></div>

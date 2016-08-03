@@ -705,7 +705,7 @@ function dataTableToCSV(dataTable_arg) {
         	data_table.addColumn('number', 'Total cases reported');
         	data_table.addColumn('number', 'Cases prosecuted');
         	data_table.addColumn('number', 'Cases not prosecuted');
-        	data_table.addColumn('number', 'Proportion of cases investigated');
+        	data_table.addColumn('number', 'Proportion of cases prosecuted');
         	<?php 
         	$proportion = 0;
         	if($total_cases>0){
@@ -824,7 +824,7 @@ function dataTableToCSV(dataTable_arg) {
 
       </script>
 
-<div id="main-content">
+<div id="main-content_with_side_bar">
 
     <div id='table1_csv' style='display: none'></div>
 	<div id='image1' style='display: none'></div>

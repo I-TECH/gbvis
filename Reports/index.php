@@ -11,7 +11,7 @@ if (isset ( $_SESSION ['logged_in'] )) {
 	// get the user object from the session
 	$user = unserialize ( $_SESSION ['user'] );
 	
-	// include "includes/header.php";
+	// include "includes/Dash_header.php";include "includes/topbar.php"; //TA:60:1
 	include "../includes/Dash_header.php"; // TA:60:1
 	include "../includes/topbar.php"; // TA:60:1
 	                                  
@@ -258,7 +258,7 @@ $(function() {
                }
     </script>
 
-<div id="main-content">
+<div id="main-content_with_side_bar">
 
 	<div id="content-body">
 		<!--  <center>

@@ -56,8 +56,8 @@ if (isset ( $_SESSION ['logged_in'] )) {
 	       $filename="Prosecution_indicator_6.1_SGBVIS_data_export_sheet.csv";
 	       header("Content-disposition: attachment;filename=$filename");
 	       print "County Code,County Name,From Date (MM/YYYY),To Date (MM/YYYY),Number of police who have been trained to respond and investigate cases of SGBV,,,,,,,,,,,,,,,\n";
-           print ",,,,Attorney General,,Solicitor General,,Director of Public prosecutions,,Assistant director of Public prosecutions,,Senior principal state counsel,,Senior state counsel,,State counsel one,,State counsel Two\n";
-           print ",,,,Male,Female,Male,Female,Male,Female,Male,Female,Male,Female,Male,Female,Male,Female,Male,Female\n";
+           print ",,,,Deputy Director of Public Prosecutions,,Senior Assistant Director of Public Prosecutions,,Director of Public prosecutions,,Assistant director of Public prosecutions,,Senior Principal Prosecution Counsel,,Principal Prosecution Counsel,,Senior Prosecution Counsel,,Prosecution Counsel One,,Prosecution Counsel Two\n";
+           print ",,,,Male,Female,Male,Female,Male,Female,Male,Female,Male,Female,Male,Female,Male,Female,Male,Female,Male,Female\n";
            
            //indicator 15
            $result = mysql_query("select counties.county_id, counties.county_name, ranks.id as rank_id, ranks.rank,

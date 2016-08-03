@@ -16,7 +16,7 @@ if( !($userTools->isAdmin($user->user_group) &&  $user->sector === '5')){
         return;
     }
     
-    // include "includes/header.php";
+    // include "includes/Dash_header.php";include "includes/topbar.php"; //TA:60:1
     include "../../includes/Dash_header.php"; // TA:60:1
     include "../../includes/topbar.php"; // TA:60:1
     
@@ -155,7 +155,7 @@ return true;
         					var ownership = $('#30_ownership_' + $i ).val();
             				var aggregate = $('#30_aggregate_' + $i ).val();
             				if(ownership != ''){
-                				if(validate("aggregate in Indicator 'Total number of schools surveyed'", aggregate)){
+                				if(validate("aggregate in Indicator 'Total number of schools surveyed for implementing life skills curriculum'", aggregate)){
                                		if(indicator30 != ""){
                                			indicator30 += ";";
                                		}
@@ -524,14 +524,14 @@ return true;
             		  }else if(place_of_vic == "2"){ //school
             			  <?php
             						foreach ($identity_of_perpetrators as $urows) {
-            						    if($urows['0'] === '3'){
+            						    if($urows['0'] === '3' || $urows['0'] === '9'){
             						    ?>
             						    $('#' + comp).append('<option value=\"<?php echo ucfirst($urows['0'])?>\"><?php echo ucfirst($urows['1'])?></option>');
             						<?php }}?>
                 		  }else if(place_of_vic == "3"){ //outside home
                 			  <?php
                 						foreach ($identity_of_perpetrators as $urows) {
-                						    if($urows['0'] === '3' || $urows['0'] === '1' || $urows['0'] === '2' || $urows['0'] === '4' || $urows['0'] === '5' || $urows['0'] === '7'){
+                						    if($urows['0'] === '3' || $urows['0'] === '1' || $urows['0'] === '2' || $urows['0'] === '4' || $urows['0'] === '5' || $urows['0'] === '7' || $urows['0'] === '9'){
                 						    ?>
                 						    $('#' + comp).append('<option value=\"<?php echo ucfirst($urows['0'])?>\"><?php echo ucfirst($urows['1'])?></option>');
                 						<?php }}?>
@@ -591,7 +591,7 @@ return true;
 
     </script>
 
-<div id="main-content">
+<div id="main-content_with_side_bar">
 
 	<div id="content-body">
 		<!--  <center>
@@ -637,8 +637,8 @@ return true;
 							<b>Indicator 8.1.b Number of MOEST staff trained in SGBV</b><br>
 						<div id='indicator33'></div> <script type='text/javascript'>add_indicator31_32_33_36(33)</script><br>
 						
-						<!-- 30: Total number of schools surveyed--> 
-							<b>Indicator 8.2.a Total number of schools surveyed</b><br>
+						<!-- 30: Total number of schools surveyed for implementing life skills curriculum--> 
+							<b>Indicator 8.2.a Total number of schools surveyed for implementing life skills curriculum</b><br>
 						<div id='indicator30'></div> <script type='text/javascript'>add_indicator29_30(30)</script><br>
 						
 							<!-- 29: Number of schools implementing life skills curriculum that teaches students on what to do in case of victimization-->

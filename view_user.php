@@ -63,7 +63,7 @@ foreach ($get_user as $urows)
 //If the form wasn't submitted, or didn't validate
 //then we show the registration form again
 
-//include "includes/header.php"; 
+//include "includes/Dash_header.php";include "includes/topbar.php"; //TA:60:1 
 include "includes/Dash_header.php"; 
 include "includes/topbar.php"; //TA:60:1
 ?>
@@ -75,7 +75,7 @@ include "includes/topbar.php"; //TA:60:1
 	  ?>
 	</div> 
 	  </div> 
-	  <div id="main-content">
+	  <div id="main-content_with_side_bar">
 	    <div id="bread-crumbs">
 	      <!--breadcrumbs-->
 	    </div>

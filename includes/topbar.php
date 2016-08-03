@@ -43,7 +43,7 @@ $APP_WEB_ROOT_PATH = "http://" . $_SERVER['HTTP_HOST'] . '/' . explode('/', $_SE
 	   <li><a href="<?php echo $APP_WEB_ROOT_PATH;?>/Reports/">View Reports</a></li>
 	   <li><a href="<?php echo $APP_WEB_ROOT_PATH;?>/help.php">Help</a></li>
 	   <li><a href="<?php echo $APP_WEB_ROOT_PATH;?>/logout.php">Log out</a></li>
-	   <li class="mzr-align-right"><a href="profile.php">Manage Account</a></li>
+	   <li class="mzr-align-right"><a href="<?php echo $APP_WEB_ROOT_PATH;?>/profile.php">Manage Account</a></li>
 	   <li class="mzr-align-right"><a style="pointer-events: none; cursor: default;" href=""><?php echo $group_results[0]['group_name']?$group_results[0]['group_name']:'';?></a></li>
 	   <li class="mzr-align-right"><a style="pointer-events: none; cursor: default;" href="">Welcome <?php echo  $user->username;?></a></li>
        </ul>

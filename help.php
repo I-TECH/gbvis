@@ -37,7 +37,7 @@ function toggle(displayText, toggleText) {
 </script>
 	
 	 
-	  <div id="main-content">
+	  <div id="main-content_with_side_bar">
 	    
         <div id="content-body">
 		<center><h2 class="page-title">Welcome to the National Sexual Gender Violence Information System (GBVIS)</h2></center> 

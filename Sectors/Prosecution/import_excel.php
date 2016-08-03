@@ -16,7 +16,7 @@ if( !($userTools->isAdmin($user->user_group) &&  $user->sector === '4')){
         return;
     }
     
-    // include "includes/header.php";
+    // include "includes/Dash_header.php";include "includes/topbar.php"; //TA:60:1
     include "../../includes/Dash_header.php"; // TA:60:1
     include "../../includes/topbar.php"; // TA:60:1
     ?>
@@ -62,7 +62,7 @@ if( !($userTools->isAdmin($user->user_group) &&  $user->sector === '4')){
 
     </script>
 
-<div id="main-content">
+<div id="main-content_with_side_bar">
 
 	<div id="content-body">
 		

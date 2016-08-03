@@ -32,7 +32,7 @@ $error = "";
 
 
 	
-include "includes/header.php"; 
+include "includes/Dash_header.php";include "includes/topbar.php"; //TA:60:1 
 include_once('../../includes/connection.php');
 include_once('includes/functions.php');
 require_once('../../classes/dropdown.class.php');
@@ -47,7 +47,7 @@ require_once('../../classes/dropdown.class.php');
 	  ?>
 	</div> 
 	  </div> 
-	  <div id="main-content">
+	  <div id="main-content_with_side_bar">
 	    <div id="bread-crumbs">
 	      <!--breadcrumbs-->
 	    </div>

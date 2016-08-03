@@ -1589,7 +1589,7 @@ echo "[{v:'" . $key . "'}, {v:" . $urows['MALE_D'] . "}, {v:" . $urows['MALE_N']
 
       </script>
 
-<div id="main-content">
+<div id="main-content_with_side_bar">
 
     <div id='table1_csv' style='display: none'></div>
     <div id='table1_csv2' style='display: none'></div>

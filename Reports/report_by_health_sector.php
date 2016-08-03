@@ -1393,18 +1393,19 @@ function dataTableToCSV(dataTable_arg) {
 
 		      //draw table
 	       	 var data_table = new google.visualization.DataTable();
+
 		       	data_table.addColumn('string', 'County name');
 		       	data_table.addColumn('number', 'Male <br>SGBV cases <br>(<18 yrs)');
-		       	data_table.addColumn('number', 'Male <br>SGBV survivors <br>initiated on PEP<br> (<18 yrs)');
-		       	data_table.addColumn('number', 'Male <br>SGBV survivors <br>given STI <br>treatment <br>(<18 yrs)');
-		       	data_table.addColumn('number', 'Male <br>SGBV surivors <br>completeing <br>trauma <br>counseling<br>(<18 yrs)');
+		       	// data_table.addColumn('number', 'Male <br>SGBV survivors <br>initiated on PEP<br> (<18 yrs)');
+		       	// data_table.addColumn('number', 'Male <br>SGBV survivors <br>given STI <br>treatment <br>(<18 yrs)');
+		       	// data_table.addColumn('number', 'Male <br>SGBV surivors <br>completeing <br>trauma <br>counseling<br>(<18 yrs)');
 		       	data_table.addColumn('number', 'Male <br>total survivors <br>given <br>comprehensive<br> care <br>(<18 yrs)');
 		       	data_table.addColumn('number', 'Male <br>proportion <br>of sexual violence <br>survivors who <br>received <br>comprehensive <br>care <br>(<18 yrs)');
 		       	data_table.addColumn('number', 'Female <br>SGBV cases <br>(<18 yrs)');
-		       	data_table.addColumn('number', 'Female <br>SGBV survivors <br>initiated on PEP<br> (<18 yrs)');
-		       	data_table.addColumn('number', 'Female <br>SGBV survivors <br>given STI <br>treatment <br>(<18 yrs)');
-		       	data_table.addColumn('number', 'Female <br>SGBV survivors <br>given emergency <br>contraceptive <br>pill<br>(<18 yrs)');
-		       	data_table.addColumn('number', 'Female <br>SGBV surivors <br>completeing <br>trauma <br>counseling<br>(<18 yrs)');
+		       	// data_table.addColumn('number', 'Female <br>SGBV survivors <br>initiated on PEP<br> (<18 yrs)');
+		       	// data_table.addColumn('number', 'Female <br>SGBV survivors <br>given STI <br>treatment <br>(<18 yrs)');
+		       	// data_table.addColumn('number', 'Female <br>SGBV survivors <br>given emergency <br>contraceptive <br>pill<br>(<18 yrs)');
+		       	// data_table.addColumn('number', 'Female <br>SGBV surivors <br>completeing <br>trauma <br>counseling<br>(<18 yrs)');
 		       	data_table.addColumn('number', 'Female <br>total survivors <br>given <br>comprehensive<br> care <br>(<18 yrs)');
 		       	data_table.addColumn('number', 'Female <br>proportion <br>of sexual violence <br>survivors who <br>received <br>comprehensive <br>care <br>(<18 yrs)');
 		       	data_table.addRows([
@@ -1419,11 +1420,15 @@ function dataTableToCSV(dataTable_arg) {
 	        	    if($urows['FEMALE_LESS18_D'] >0){
 	        	        $female = round(($female_total/$urows['FEMALE_LESS18_D'])*100,2);
 	        	    }
-echo "[{v:'" . $key . "'}, {v:" . $urows['MALE_LESS18_D'] . "}, {v:" . 
+ /*                   echo "[{v:'" . $key . "'}, {v:" . $urows['MALE_LESS18_D'] . "}, {v:" . 
     $urows['MALE_LESS18_N_4'] . "}, {v:" . $urows['MALE_LESS18_N_5'] . "}, {v:" . $urows['MALE_LESS18_N_39'] . "}, {v:" . 
     $male_total . "}, {v:" . $male . "}, {v:" . 
     $urows['FEMALE_LESS18_D'] . "}, {v:" . 
     $urows['FEMALE_LESS18_N_4'] . "}, {v:" . $urows['FEMALE_LESS18_N_5'] . "},{v:" . $urows['FEMALE_LESS18_N_6'] . "},{v:" . $urows['FEMALE_LESS18_N_39'] . "},{v:" . 
+    $female_total . "},{v:" . $female . "}],";*/
+echo "[{v:'" . $key . "'}, {v:" . $urows['MALE_LESS18_D'] . "}, {v:" . 
+    $male_total . "}, {v:" . $male . "}, {v:" . 
+    $urows['FEMALE_LESS18_D'] . "}, {v:" . 
     $female_total . "},{v:" . $female . "}],";
 	        	    	        	}?>
 	        	    	  ]);
@@ -1478,16 +1483,16 @@ echo "[{v:'" . $key . "'}, {v:" . $urows['MALE_LESS18_D'] . "}, {v:" .
 	       	 var data_table2 = new google.visualization.DataTable();
 		       	data_table2.addColumn('string', 'County name');
 		       	data_table2.addColumn('number', 'Male <br>SGBV cases <br>(>18 yrs)');
-		       	data_table2.addColumn('number', 'Male <br>SGBV survivors <br>initiated on PEP<br> (>18 yrs)');
-		       	data_table2.addColumn('number', 'Male <br>SGBV survivors <br>given STI <br>treatment <br>(>18 yrs)');
-		       	data_table2.addColumn('number', 'Male <br>SGBV surivors <br>completeing <br>trauma <br>counseling<br>(>18 yrs)');
+		       	//data_table2.addColumn('number', 'Male <br>SGBV survivors <br>initiated on PEP<br> (>18 yrs)');
+		       	//data_table2.addColumn('number', 'Male <br>SGBV survivors <br>given STI <br>treatment <br>(>18 yrs)');
+		       	//data_table2.addColumn('number', 'Male <br>SGBV surivors <br>completeing <br>trauma <br>counseling<br>(>18 yrs)');
 		       	data_table2.addColumn('number', 'Male <br>total survivors <br>given <br>comprehensive<br> care <br>(>18 yrs)');
 		       	data_table2.addColumn('number', 'Male <br>proportion <br>of sexual violence <br>survivors who <br>received <br>comprehensive <br>care <br>(>18 yrs)');
 		       	data_table2.addColumn('number', 'Female <br>SGBV cases <br>(>18 yrs)');
-		       	data_table2.addColumn('number', 'Female <br>SGBV survivors <br>initiated on PEP<br> (>18 yrs)');
-		       	data_table2.addColumn('number', 'Female <br>SGBV survivors <br>given STI <br>treatment <br>(>18 yrs)');
-		       	data_table2.addColumn('number', 'Female <br>SGBV survivors <br>given emergency <br>contraceptive <br>pill<br>(>18 yrs)');
-		       	data_table2.addColumn('number', 'Female <br>SGBV surivors <br>completeing <br>trauma <br>counseling<br>(>18 yrs)');
+		       	// data_table2.addColumn('number', 'Female <br>SGBV survivors <br>initiated on PEP<br> (>18 yrs)');
+		       	// data_table2.addColumn('number', 'Female <br>SGBV survivors <br>given STI <br>treatment <br>(>18 yrs)');
+		       	// data_table2.addColumn('number', 'Female <br>SGBV survivors <br>given emergency <br>contraceptive <br>pill<br>(>18 yrs)');
+		       	// data_table2.addColumn('number', 'Female <br>SGBV surivors <br>completeing <br>trauma <br>counseling<br>(>18 yrs)');
 		       	data_table2.addColumn('number', 'Female <br>total survivors <br>given <br>comprehensive<br> care <br>(>18 yrs)');
 		       	data_table2.addColumn('number', 'Female <br>proportion <br>of sexual violence <br>survivors who <br>received <br>comprehensive <br>care <br>(>18 yrs)');
 		       	data_table2.addRows([
@@ -1502,12 +1507,31 @@ echo "[{v:'" . $key . "'}, {v:" . $urows['MALE_LESS18_D'] . "}, {v:" .
 	        	    if($urows['FEMALE_MORE18_D'] >0){
 	        	        $female = round(($female_total/$urows['FEMALE_MORE18_D'])*100,2);
 	        	    }
-echo "[{v:'" . $key . "'}, {v:" . $urows['MALE_MORE18_D'] . "}, {v:" . 
-  $urows['MALE_MORE18_N_4'] . "}, {v:" . $urows['MALE_MORE18_N_5'] . "}, {v:" . $urows['MALE_MORE18_N_39'] . "}, {v:" . 
-  $male_total . "}, {v:" . $male . "}, {v:" . 
-  $urows['FEMALE_MORE18_D'] . "}, {v:" . 
-  $urows['FEMALE_MORE18_N_4'] . "}, {v:" . $urows['FEMALE_MORE18_N_5'] . "},{v:" . $urows['FEMALE_MORE18_N_6'] . "},{v:" . $urows['FEMALE_MORE18_N_39'] . "},{v:" . 
-  $female_total . "},{v:" . $female . "}],";
+/*echo "[
+{v:'" . $key . "'}, 
+{v:" . $urows['MALE_MORE18_D'] . "}, 
+{v:" . $urows['MALE_MORE18_N_4'] . "}, 
+{v:" . $urows['MALE_MORE18_N_5'] . "}, 
+{v:" . $urows['MALE_MORE18_N_39'] . "}, 
+{v:" . $male_total . "}, 
+{v:" . $male . "}, 
+{v:" . $urows['FEMALE_MORE18_D'] . "}, 
+{v:" . $urows['FEMALE_MORE18_N_4'] . "}, 
+{v:" . $urows['FEMALE_MORE18_N_5'] . "},
+{v:" . $urows['FEMALE_MORE18_N_6'] . "},
+{v:" . $urows['FEMALE_MORE18_N_39'] . "},
+{v:" . $female_total . "},
+{v:" . $female . "}],";  */                  
+echo "[
+{v:'" . $key . "'}, 
+{v:" . $urows['MALE_MORE18_D'] . "}, 
+ 
+{v:" . $male_total . "}, 
+{v:" . $male . "}, 
+{v:" . $urows['FEMALE_MORE18_D'] . "}, 
+
+{v:" . $female_total . "},
+{v:" . $female . "}],";
 	        	    	        	}?>
 	        	    	  ]);
 		       	var table2 = new google.visualization.Table(document.getElementById('table_div2'));      
@@ -2591,7 +2615,7 @@ echo "[{v:'" . $key . "'}, {v:" . $urows['MALE_MORE18'] . "}, {v:" . $urows['FEM
 
       </script>
 
-<div id="main-content">
+<div id="main-content_with_side_bar">
 
     <div id='table1_csv' style='display: none'></div>
     <div id='table1_csv1' style='display: none'></div>

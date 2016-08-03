@@ -77,7 +77,7 @@ if( !($userTools->isAdmin($user->user_group) &&  $user->sector === '5')){
 	   if($indicator30 && $indicator30 !== ''){
 	       $data['indicator_id'] = 30;
 	       $ownerships = explode(";" , $indicator30);
-	       $message .= "\nIndicator 8.2.a Total number of schools surveyed:\n";
+	       $message .= "\nIndicator 8.2.a Total number of schools surveyed for implementing life skills curriculum:\n";
 	       for($i=0;$i<count($ownerships);$i++){
 	           $ownership = explode("," , $ownerships[$i]);
 	           $data['ownership'] = $ownership[0];
@@ -195,7 +195,7 @@ if( !($userTools->isAdmin($user->user_group) &&  $user->sector === '5')){
 	        $error_upload .= validate_header($row2[1], "County Name", "B", "2");
 	        $error_upload .= validate_header($row2[2], "Number of teachers and secretariat staff trained in SGBV", "C", "2"); //indicator_id=36
 	        $error_upload .= validate_header($row2[5], "Number of  MOEST staff trained in SGBV", "F", "2"); //indicator_id=33
-	        $error_upload .= validate_header($row2[8], "Total Number of schools surveyed", "I", "2"); //indicator_id=30
+	        $error_upload .= validate_header($row2[8], "Total number of schools surveyed for implementing life skills curriculum", "I", "2"); //indicator_id=30
 	        $error_upload .= validate_header($row2[11], "Number of schools implementing life skills curriculum that teaches students on what to do in case of victimization", "L", "2"); //indicator_id=29
 	        $error_upload .= validate_header($row2[14], "Number of children who possess life skills", "O", "2"); //indicator_id=32
 	        $error_upload .= validate_header($row2[17], "Total number of children in the sample", "R", "2"); //indicator_id=31
@@ -257,8 +257,8 @@ if( !($userTools->isAdmin($user->user_group) &&  $user->sector === '5')){
 	            $message_upload .= insert_indicators31_32_33_36($row[0], $row[14], $row[16], $user->id, $date_created, '32', $db, $row[1], 'Number of children who possess life skills', 'Female');
 	            $message_upload .= insert_indicators31_32_33_36($row[0], $row[17], $row[18], $user->id, $date_created, '31', $db, $row[1], 'Total number of children in the sample', 'Male');
 	            $message_upload .= insert_indicators31_32_33_36($row[0], $row[17], $row[19], $user->id, $date_created, '31', $db, $row[1], 'Total number of children in the sample', 'Female');
-	            $message_upload .= insert_indicators29_30($row[0], $row[8], $row[9], $user->id, $date_created, '30', $db, $row[1], 'Total Number of schools surveyed', 24);
-	            $message_upload .= insert_indicators29_30($row[0],  $row[8], $row[10], $user->id, $date_created, '30', $db, $row[1], 'Total Number of schools surveyed', 25);
+	            $message_upload .= insert_indicators29_30($row[0], $row[8], $row[9], $user->id, $date_created, '30', $db, $row[1], 'Total number of schools surveyed for implementing life skills curriculum', 24);
+	            $message_upload .= insert_indicators29_30($row[0],  $row[8], $row[10], $user->id, $date_created, '30', $db, $row[1], 'Total number of schools surveyed for implementing life skills curriculum', 25);
 	            $message_upload .= insert_indicators29_30($row[0],  $row[11], $row[12], $user->id, $date_created, '29', $db, $row[1], 'Number of schools implementing life skills curriculum that teaches students on what to do in case of victimization', 24);
 	            $message_upload .= insert_indicators29_30($row[0],  $row[11], $row[13], $user->id, $date_created, '29', $db, $row[1], 'Number of schools implementing life skills curriculum that teaches students on what to do in case of victimization', 25);        
 	        }

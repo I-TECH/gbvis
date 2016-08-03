@@ -18,7 +18,7 @@ $user = unserialize($_SESSION['user']);
 $firstname = $user->firstname;
 $lastname = $user->lastname;
 $username = $user->username;
-$password = $user->password;
+$current_password = $user->hashedPassword;
 $email = $user->email;
 $sector = $user->sector;
 $user_group = $user->user_group;
@@ -49,13 +49,12 @@ if(isset($_POST['submit-settings'])) {
 	$lastname = $_POST['lastname'];
 	$mobile_phone = $_POST['mobile_phone'];
 	$email = $_POST['email'];
-	$password = $_POST['password'];
-	
+	$new_password = $_POST['password'];
 	$user->firstname= $firstname;
 	$user->lastname = $lastname;
 	$user->email = $email;
 	$user->mobile_phone = $mobile_phone;
-	$user->password = $password;
+	$user->hashedPassword = ($new_password==$current_password) ? $current_password : md5($new_password) ;
 	$user->save();
 
 	$message = "Profile Updated successfully";
@@ -111,7 +110,7 @@ include "includes/topbar.php"; //TA:60:1
        <div class="inputsDiv"><input type="text" value="<?php echo $mobile_phone; ?>" name="mobile_phone" class="textInputs"/></div><br clear="all">
     
     <div class="labelsDiv">Password: </div>
-       <div class="inputsDiv"><input type="text" value="<?php echo $password; ?>" name="password" class="textInputs"/></div><br clear="all">
+       <div class="inputsDiv"><input type="password" value="<?php echo $current_password; ?>" name="password" class="textInputs"/></div><br clear="all">
       
       <br clear="all">
 	

@@ -17,7 +17,7 @@ $user = unserialize($_SESSION['user']);
 include "includes/Dash_header.php"; //TA:60:1
 ?>
  
-	  <div id="main-content">
+	  <div id="main-content_with_side_bar">
 	    
         <div id="content-body">
        
