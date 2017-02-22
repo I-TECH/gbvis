@@ -21,7 +21,8 @@
 $hostname = 'localhost';      
 $dbname   = 'gbvis';
 $username = 'root';          
-$password = '1234';               
+//$password = '1234'; 
+$password = '1234'; //TA:60:DB_PASSWORD              
 // error_reporting(E_ALL);
 // ini_set('display_errors', '1');
 	

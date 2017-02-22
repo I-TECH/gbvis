@@ -18,6 +18,7 @@ $user = unserialize($_SESSION['user']);
 $firstname = $user->firstname;
 $lastname = $user->lastname;
 $username = $user->username;
+$current_password = $user->hashedPassword;
 $email = $user->email;
 $sector = $user->sector;
 $user_group = $user->user_group;
@@ -48,38 +49,43 @@ if(isset($_POST['submit-settings'])) {
 	$lastname = $_POST['lastname'];
 	$mobile_phone = $_POST['mobile_phone'];
 	$email = $_POST['email'];
-	
+	$new_password = $_POST['password'];
 	$user->firstname= $firstname;
 	$user->lastname = $lastname;
 	$user->email = $email;
 	$user->mobile_phone = $mobile_phone;
+	$user->hashedPassword = ($new_password==$current_password) ? $current_password : md5($new_password) ;
 	$user->save();
 
-	$message = "Profile Updated successfully <br/>";
+	$message = "Profile Updated successfully";
 }
 
 //If the form wasn't submitted, or didn't validate
 //then we show the registration form again
-include "includes/header.php"; 
+include "includes/Dash_header.php"; //TA:60:1
+include "includes/topbar.php"; //TA:60:1
 ?>
-	  <div id="sidebar">
-	  <center><h3 style="text-size:18px;  font-family: TStar-Bol"></h3></center>
+
+<script type="text/javascript">
+
+</script>
+
+<div id="sidebar">  
 	<div class="sidebar-nav">
 	<?php
-	  include "includes/sidebar.php"; 
+ 	  include "includes/sidebar.php"; 
 	  ?>
 	</div> 
 	  </div> 
-	  <div id="main-content">
-	    <div id="bread-crumbs">
-	      <!--breadcrumbs-->
-	    </div>
+	  <div id="main-content_with_side_bar">
+	    
         <div id="content-body">
-		<center><h3 class="page-title">Edit profile</h3></center>
-	       <hr size="1" color="#CCCCCC">
+		<h3 class="page-title">Edit Profile</h3>
+	       
 		   <div class="profile-data" align="left">
-	<div><p style="font-family:Verdana, Geneva, sans-serif; font-size:145px; color:red;padding-left:25px"><?php echo $message; ?></p></p></p></div>
+	<div><p style="font-family:Verdana, Geneva, sans-serif; font-size:12px; color:red;padding-left:25px"><?php echo $message; ?></p></div>
 
+	<?php if($message === ""){ ?>
 	<form action="" method="post" >
 	
 	<div class="labelsDiv">First name:</div>
@@ -94,7 +100,7 @@ include "includes/header.php";
 	<div class="labelsDiv">E-Mail:</div>
        <div class="inputsDiv"> <input type="text" value="<?php echo $email; ?>" name="email" class="textInputs" /></div><br clear="all">
        
-	<div class="labelsDiv">user Group: </div>
+	<div class="labelsDiv">User Group: </div>
        <div class="inputsDiv"><input type="text" value="<?php echo $group_name; ?>" readonly name="user_group" class="textInputs" /></div><br clear="all">
        
 	<div class="labelsDiv">Sector: </div>
@@ -102,6 +108,10 @@ include "includes/header.php";
        
 	<div class="labelsDiv">Mobile phone: </div>
        <div class="inputsDiv"><input type="text" value="<?php echo $mobile_phone; ?>" name="mobile_phone" class="textInputs"/></div><br clear="all">
+    
+    <div class="labelsDiv">Password: </div>
+       <div class="inputsDiv"><input type="password" value="<?php echo $current_password; ?>" name="password" class="textInputs"/></div><br clear="all">
+      
       <br clear="all">
 	
 	<div class="labelsDiv"></div>
@@ -109,12 +119,21 @@ include "includes/header.php";
 	<br clear="all">
 	<br clear="all">
 	</form>
+	<?php } ?>
 	<br clear="all">
 	<br clear="all">
 </div><br clear="all">
 <br clear="all">
 </center>
-	    </div> 		
+	    </div><br clear="all">
+
+	    </div> 	
+	    
+
+
+
+	  
+	 
 	 	
  <?php
  include "includes/footer.php"; 

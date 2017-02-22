@@ -13,7 +13,9 @@ if(isset($_SESSION['logged_in'])) {
 $user = unserialize($_SESSION['user']);
 
 
-include "../includes/headerlevel2.php"; 
+//include "../includes/headerlevel2.php"; 
+include "../includes/Dash_header.php"; 
+include "../includes/topbar.php"; //TA:60:1
 ?>
 	  <div id="sidebar">
 	  <center><h3 style="text-size:18px;  font-family: TStar-Bol"></h3></center>
@@ -23,7 +25,7 @@ include "../includes/headerlevel2.php";
 	  ?>
 	</div> 
 	  </div> 
-	  <div id="main-content">
+	  <div id="main-content_with_side_bar">
 	    <div id="bread-crumbs">
 	      <!--breadcrumbs-->
 	    </div>

@@ -17,14 +17,13 @@ if(isset($_SESSION['logged_in'])) {
 //get the user object from the session
 $user = unserialize($_SESSION['user']);
 
-include "includes/header.php"; 
+
 include_once('includes/connection.php');
 include_once('includes/functions.php');
 $tabActive ='tab1';
 
-
-
-
+include "includes/Dash_header.php"; // TA:60:1
+include "includes/topbar.php"; // TA:60:1
 ?>
 
 	    <div id="sidebar">
@@ -35,7 +34,7 @@ $tabActive ='tab1';
 	  ?>
 	</div> 
 	  </div> 
-	  <div id="main-content">
+	  <div id="main-content_with_side_bar">
 	    <div id="bread-crumbs">
 	      <!--breadcrumbs-->
 	    </div>
@@ -90,7 +89,7 @@ $tabActive ='tab1';
           $startpoint = ($page * $per_page) - $per_page;
           
 
-       $statement = "`users` WHERE user_group!=1 ORDER BY id ASC"; // Change `records` according to your table name.
+       $statement = "`users` ORDER BY firstname ASC"; // Change `records` according to your table name.
         
        //$where ="'sector_id'= $user_sector_name";
   

@@ -47,7 +47,9 @@ foreach ($get_user as $urows)
 //If the form wasn't submitted, or didn't validate
 //then we show the registration form again
 
-include "includes/header.php"; 
+//include "includes/Dash_header.php";include "includes/topbar.php"; //TA:60:1 
+include "includes/Dash_header.php"; 
+include "includes/topbar.php"; //TA:60:1
 ?>
 	  <div id="sidebar">
 	  <center><h3 style="text-size:18px; font-family: TStar-Bol"></h3></center>
@@ -57,7 +59,7 @@ include "includes/header.php";
 	  ?>
 	</div> 
 	  </div> 
-	  <div id="main-content">
+	  <div id="main-content_with_side_bar">
 	    <div id="bread-crumbs">
 	      <!--breadcrumbs-->
 	    </div>
@@ -69,7 +71,7 @@ include "includes/header.php";
 <table class="forms-table" width="700" style="">
    <form method="post" action="update_user.php">
 <tr>
-<td colspan="2" style="font:bold 21px arial; text-align:center; border-bottom:1px solid #eee; padding:5px 0 10px 0;">Eidt User</td></tr>
+<td colspan="2" style="font:bold 21px arial; text-align:center; border-bottom:1px solid #eee; padding:5px 0 10px 0;">Edit User</td></tr>
 </tr>
 <tr>
 <td colspan="2" style="font:bold 21px arial; text-align:center; border-bottom:1px solid #eee; padding:5px 0 10px 0;"><p id="msgDsp" STYLE="color:#FF0000; font-size:14px; "></p>

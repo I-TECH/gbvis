@@ -30,7 +30,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
 <link href="UI/css/style.css" rel="stylesheet" type="text/css">
-<link href="UI/css/style2.css" rel="stylesheet" type="text/css">
+<link href="../UI/css/style.css" rel="stylesheet" type="text/css"> <!-- TA:60:1 make visible from Reports location also -->
+<link href="../../UI/css/style.css" rel="stylesheet" type="text/css"> <!-- TA:60:4 make visible from Sectors/Health location also -->
+<link href="UI/css/meganizr.css" rel="stylesheet" type="text/css"> <!-- TA:60:1 for top bar -->
+<link href="../UI/css/meganizr.css" rel="stylesheet" type="text/css"> <!-- TA:60:1 for top bar  make visible from Reports location also -->
+<link href="../../UI/css/meganizr.css" rel="stylesheet" type="text/css"> <!-- TA:60:4 for top bar  make visible from  Sectors/Health location als -->
 <link href="UI/css/login_style.css" rel="stylesheet" type="text/css">
 <link href="UI/css/popupcss.css" rel="stylesheet" type="text/css">
 <link href="UI/css/popup.css" rel="stylesheet" type="text/css">
@@ -42,6 +46,7 @@
 <script src="UI/js/jquery-ui-1.11.2.custom//jquery-ui.js"></script>
 <script language="javascript" src="UI/js/aggregates.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+
 		<style type="text/css">
 ${demo.css}
 		</style>
@@ -110,15 +115,18 @@ $(function () {
 <body>
 <div id="gbiv-wrapper">
 <div id="header">
-   <div class="logo">
-      <img src="UI/images/logo.png" height="70" /> 
-	</div>
+<!-- TA:60:1 show images from different location -->
+<?php 
+ echo '<img src="http://' . $_SERVER['HTTP_HOST'] . '/' . explode('/', $_SERVER['SCRIPT_NAME'])[1] . '/UI/images/banner1.png' . '"/>';
+?>
+
+   
+	 <!-- TA:60:1  
     <div class="menuLinks">
 	  <div class="top-menuLinks">
-	   <div class="system-title">
-	  <h3 class="title-name">Gender Based Violence Information System(GBVIS)</h3>
-      </div>
-	  <div class="user_status_nav">
+	   
+	
+	 <div class="user_status_nav">
 	    <section class="login-status-sec">
          
 		<font style="font-family:Verdana, Geneva, sans-serif; font-size:12px; color:white;padding-right:2px;"> Welcome <?php echo  $user->username;?></font>|
@@ -128,11 +136,13 @@ $(function () {
             <a href="logout.php" align="left" style="font-family:Verdana, Geneva, sans-serif; font-size:12px; color:white; text-decoration:none;padding-right:2px;">Log Out</a>
 			
 	   </section>
-	</div>
+	</div> 
+	
+	
 	</div>
 	<div class="bottom-menuLinks">
-	<!--menu here-->
+	
 	</div>
-	 </div>
+	 </div> -->
  </div>
  <div id="gbvis-main">

@@ -6,7 +6,7 @@ class DB
    // protected $db_name = 'reports';
 	protected $db_name = 'test';
     protected $db_user = 'root';
-    protected $db_pass = '';
+    protected $db_pass = '1234';
     protected $db_host = 'localhost';
 	
  

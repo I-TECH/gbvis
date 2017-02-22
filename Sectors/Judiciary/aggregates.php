@@ -33,7 +33,7 @@ $survey_period="";
 
 
 	
-include "includes/header.php"; 
+include "includes/Dash_header.php";include "includes/topbar.php"; //TA:60:1 
 include_once('../../includes/connection.php');
 include_once('includes/functions.php');
 
@@ -47,7 +47,7 @@ include_once('includes/functions.php');
 	  ?>
 	</div> 
 	  </div> 
-	  <div id="main-content">
+	  <div id="main-content_with_side_bar">
 	    <div id="bread-crumbs">
 	      <!--breadcrumbs-->
 	    </div>
@@ -74,7 +74,7 @@ include_once('includes/functions.php');
 			  <th align="left"><b>Indicator</b></th>
 			  <th align="left"><b>County</b></th>
 			  <th align="left"><b>Survey Period</b></th>
-			    <th align="left"><b>Agregates</b></th>
+			    <th align="left"><b>Aggregates</b></th>
 			     <!--<th align="left"><b>Date</b></th>-->
                           <th align="left"><b><center>View</center></b></th>
                           <th align="left"><b><center>Edit</center></b></th>

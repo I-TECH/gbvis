@@ -30,7 +30,7 @@
 <META NAME="KEYWORDS" CONTENT="">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="../UI/css/style.css" rel="stylesheet" type="text/css">
-<link href="../UI/css/style2.css" rel="stylesheet" type="text/css">
+<link href="../UI/css/style.css" rel="stylesheet" type="text/css">
 <link href="../UI/css/modal.css" rel="stylesheet" type="text/css">
 <link href="../UI/css/bootstrap/bootstrap.css" rel="stylesheet" media="screen"/>
 <link href="../UI/css/popupcss.css" rel="stylesheet" type="text/css">

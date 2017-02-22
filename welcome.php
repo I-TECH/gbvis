@@ -14,31 +14,25 @@ if(!isset($_SESSION['logged_in'])) {
 //get the user object from the session
 $user = unserialize($_SESSION['user']);
 
-include "includes/header.php"; 
+include "includes/Dash_header.php"; //TA:60:1
 ?>
-<div id="sidebar">
-	  <center><h3 style="text-size:18px;  font-family: TStar-Bol"></h3></center>
-	<div class="sidebar-nav">
-	<?php
-	  include "includes/sidebar.php"; 
-	  ?>
-	</div> 
-	  </div> 
-	  <div id="main-content">
-	    <div id="bread-crumbs">
-	      <!--breadcrumbs-->
-	    </div>
+ 
+	  <div id="main-content_with_side_bar">
+	    
         <div id="content-body">
-		<center><h3 class="page-title">Home</h3></center>
-		
-	Hey there, <?php echo $user->username; ?>. You've been registered and logged in. Welcome! <a href="logout.php">Log Out</a> | <a href="index.php">Return to Homepage</a>
+       
+        
+		<!-- TA:60:1 --> 
+		<!--<center><h2 class="page-title">Home</h2></center>-->
+	<br>Hallo, <?php echo $user->username; ?>. You've been registered and logged in. Welcome! &nbsp;&nbsp;<a href="logout.php">Log Out</a> &nbsp;&nbsp;| &nbsp;&nbsp;<a href="index.php">Go to Homepage</a>
 
 	
 	</div> 		
 	  </div> 
 	
  <?php
- include "includes/footer.php"; 
+ //TA:60:1 -->
+include "includes/footer.php";
 	
 
 ?>

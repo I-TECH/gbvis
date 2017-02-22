@@ -37,7 +37,7 @@ if(isset($_POST['submit-form'])) {
 	$password_confirm = $_POST['password-confirm'];
 	$email = $_POST['email'];
 	$mobile_phone = $_POST['mobile_phone'];
-
+	
 	//initialize variables for form validation
 	$success = true;
 	$userTools = new UserTools();
@@ -46,18 +46,18 @@ if(isset($_POST['submit-form'])) {
 	//check to see if user name already exists
 	if($userTools->checkUsernameExists($username))
 	{
-	    $error .= "That username is already taken.<br/> \n\r";
+	    $error .= "That username is already taken.";
 	    $success = false;
 	}
 
 	//check to see if passwords match
 	if($password != $password_confirm) {
-	    $error .= "Passwords do not match.<br/> \n\r";
+	    $error .= "Passwords do not match.";
+	    
 	    $success = false;
 	}
        
-	if($success)
-	{
+	if($success){
 	    //prep the data for saving in a new user object
 	    $data['firstname'] = $firstname;
 	    $data['lastname'] = $lastname;
@@ -67,42 +67,87 @@ if(isset($_POST['submit-form'])) {
 	    $data['email'] = $email;
 	    $data['sector'] = $sector;
 	    $data['join_date'] = $date_created;
+	    $data['mobile_phon'] = $mobile_phone;
 	
 	    //create the new user object
 	    $newUser = new User($data);
 	
 	    //save the new user to the database
 	    $newUser->save(true);
-	
-	    
-	    
+	    echo "<script type='text/javascript'>alert('New user added successfully!')</script>";    
+	}else{
+	   echo "<script type='text/javascript'>alert('" . $error . "')</script>";
 	}
-      $NewUsersaved =true;
+      
 }
 
-//If the form wasn't submitted, or didn't validate
-//then we show the registration form again
-
-include "includes/header.php"; 
+ 
+	  include "includes/Dash_header.php"; // TA:60:1
+	  include "includes/topbar.php"; // TA:60:1
 ?>
+
+<script type="text/javascript">
+function validate(){
+	if(document.forms["form"]["firstname"].value == ''){
+		alert("First Name is required.");
+		return false;
+	}
+	if(document.forms["form"]["lastname"].value == ''){
+		alert("Last Name is required.");
+		return false;
+	}
+	if(document.forms["form"]["username"].value == ''){
+		alert("User name is required.");
+		return false;
+	}
+	var email = document.forms["form"]["email"].value;
+	if(email == ''){
+		alert("Email is required.");
+		return false;
+	}else{
+		var atpos = email.indexOf("@");
+	    var dotpos = email.lastIndexOf(".");
+	    if (atpos<1 || dotpos<atpos+2 || dotpos+2>=email.length) {
+	        alert("Not a valid e-mail address");
+	        return false;
+	    }
+	}
+	if(document.forms["form"]["password"].value == ''){
+		alert("Password is required.");
+		return false;
+	}
+	if(document.forms["form"]["password"].value != document.forms["form"]["password-confirm"].value){
+		alert("Passwords do not match.");
+		return false;
+	}
+	return true;
+}
+
+function isNumberKey(e){
+    if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+              return false;
+   }
+}
+</script>
+
 	  <div id="sidebar">
-	  <center><h3 style="text-size:18px; font-family: TStar-Bol"></h3></center>
+	  
 	<div class="sidebar-nav">
 	<?php
 	  include "includes/sidebar.php"; 
+	  
 	  ?>
 	</div> 
 	  </div> 
-	  <div id="main-content">
-	    <div id="bread-crumbs">
-	      <!--breadcrumbs-->
-	    </div>
+	  <div id="main-content_with_side_bar">
+	    
         <div id="content-body">
 		
   <div class="profile-data" align="left">
 
-<table class="forms-table" width="700" style="">
-   <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+  <form name="form" onsubmit="return validate();" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" >
+<table width="700" style="">
+   
 <tr>
 <td colspan="2" style="font:bold 21px arial; text-align:center; border-bottom:1px solid #eee; padding:5px 0 10px 0;">Add User</td></tr>
 </tr>
@@ -112,11 +157,11 @@ include "includes/header.php";
 </tr>
 <tr>
 <td width="50%" class="table-td-input">First Name</td>
-<td width="50%" class="table-td-input"><div id='t1'><input type="text" name="firstname" id="lastname" value="<?php echo $username; ?>" class=form_textbox_inputs></div></td>
+<td width="50%" class="table-td-input"><div id='t1'><input type="text" name="firstname" id="firstname" value="<?php echo $firstname; ?>" class=form_textbox_inputs></div></td>
 </tr>
 <tr>
 <td width="50%" class="table-td-input">Last Name</td>
-<td width="50%" class="table-td-input"><div id='t1'><input type="text" name="lastname" id="lastname" value="<?php echo $username; ?>" class=form_textbox_inputs></div></td>
+<td width="50%" class="table-td-input"><div id='t1'><input type="text" name="lastname" id="lastname" value="<?php echo $lastname; ?>" class=form_textbox_inputs></div></td>
 </tr>
 <tr>
 <td width="50%" class="table-td-input">User name</td>
@@ -128,7 +173,7 @@ include "includes/header.php";
 </tr>
 <tr>
 <td width="50%" class="table-td-input">Mobile Phone No</td>
-<td width="50%" class="table-td-input"><div id='t1'><input type="text" name="mobile_phone" id="mobile_phone" value="<?php echo $username; ?>" class=form_textbox_inputs></div></td>
+<td width="50%" class="table-td-input"><div id='t1'><input type="text" onkeypress='return isNumberKey(event)' name="mobile_phone" id="mobile_phone" value="<?php echo $mobile_phone; ?>" class=form_textbox_inputs></div></td>
 </tr>
 <tr>
 <td width="50%" class="table-td-input">User group</td>
@@ -167,21 +212,14 @@ $ddl=new dropdown();
 <input type="reset" name="Reset" id="" value="Reset" style="" class="gbvis_general_button">
 </td>
 </tr>
-</form>
 </table>
-<?php 
-  if($NewUsersaved)
-  {
-
-echo "<script type='text/javascript'>alert('New user added successfully!')</script>";
+</form>
 
 
-}
-?>
 <br clear="all">
 <br clear="all">
 </div><br clear="all">
-</center>
+
 	    </div> 		
 	  </div> 	
  <?php

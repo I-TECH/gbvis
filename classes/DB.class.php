@@ -4,7 +4,8 @@ class DB {
  
     protected $db_name = 'gbvis';
     protected $db_user = 'root';
-    protected $db_pass = '1234';
+    //protected $db_pass = '1234';
+    protected $db_pass = '1234'; //TA:60:DB_PASSWORD
     protected $db_host = 'localhost';
  
     //open a connection to the database. Make sure this is called
@@ -76,6 +77,25 @@ class DB {
         return $this->processRowSet($result);
     }
     
+    function make_query($sql){
+        $result = mysql_query($sql);
+        if(mysql_num_rows($result) == 1)
+            return $this->processRowSet($result, true);
+        
+        return $this->processRowSet($result);
+    }
+    
+    //Select rows from the database.
+    //returns a full row or rows from $table using $where as the where clause.
+    //return value is an associative array with column names as keys.
+    public function selectAllData($table, $where) {
+    
+        $sql = "SELECT * FROM $table WHERE $where";
+        $result = mysql_query($sql);
+    
+        return $this->processRowSet($result);
+    }
+    
        public function selectData($table, $where) {
        
         $sql = "SELECT * FROM $table WHERE $where";
@@ -85,6 +105,7 @@ class DB {
  
         return $this->processRowSetData($result);
     }
+       
        public function selectViewtbl($table) {
         $sql = "SELECT * from $table";
         $result = mysql_query($sql);
@@ -93,6 +114,37 @@ class DB {
  
         return $this->processRowSetAsRow($result);
     }
+    
+    //TA:60:1 
+    public function selectAllOrdered($table, $order) {
+    
+        $sql = "SELECT * from $table ORDER BY $order";
+        $result = mysql_query($sql);
+        if(mysql_num_rows($result) == 1)
+            return $this->processRowSetAsRow($result, true);
+ 
+        return $this->processRowSetAsRow($result);
+    }
+    
+    //TA:60:1
+    public function selectAllOrderedWhere($table, $order, $where) {
+    
+        $sql = "SELECT * from $table WHERE $where ORDER BY $order";
+        $result = mysql_query($sql);
+        return $this->processRowSetAsRow($result);
+    }
+    
+    //Select rows from the database.
+    //returns a full row or rows from $table using $where as the where clause.
+    //return value is an associative array with column names as keys.
+    public function selectAllInArray($table, $where) {
+    
+        $sql = "SELECT * FROM $table WHERE $where";
+        $result = mysql_query($sql);
+    
+        return $this->processRowSet($result);
+    }
+    
     
     
     
@@ -135,7 +187,8 @@ class DB {
             $values .= $value;
         }
  
-        $sql = "insert IGNORE into $table ($columns) values ($values)";
+//         $sql = "insert IGNORE into $table ($columns) values ($values)";
+        $sql = "insert into $table ($columns) values ($values)";
  
         mysql_query($sql) or die(mysql_error());
  
@@ -155,9 +208,12 @@ class DB {
             $values .= $value;
         }
  
-        $sql = "insert IGNORE  into $table ($columns) values ($values)";
+       // $sql = "insert IGNORE  into $table ($columns) values ($values)";
+        $sql = "insert into $table ($columns) values ($values)";
+        
+     //  print $sql . "+";
  
-        mysql_query($sql) or die(mysql_error());
+       mysql_query($sql) or die(mysql_error());
  
         //return the ID of the user in the database.
         return true;

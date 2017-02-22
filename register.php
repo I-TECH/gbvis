@@ -52,12 +52,12 @@ if(isset($_POST['submit-form'])) {
 	if($success)
 	{
 	    //prep the data for saving in a new user object
-		$data['firstname'] = $firstname;
-		$data['lastname'] = $lastname;
-	        $data['username'] = $username;
+		$data['firstname'] =mysql_real_escape_string($firstname);
+		$data['lastname'] = mysql_real_escape_string($lastname);
+	        $data['username'] = mysql_real_escape_string($username);
 	        $data['password'] = md5($password); //encrypt the password for storage
-	        $data['email'] = $email;
-		$data['mobile_phone'] = $mobile_phone;
+	        $data['email'] = mysql_real_escape_string($email);
+		$data['mobile_phone'] = mysql_real_escape_string($mobile_phone);
 		$data['user_group'] = $user_group;
 		$data['sector'] = $sector;
 	
@@ -77,9 +77,11 @@ if(isset($_POST['submit-form'])) {
 
 }
 
-include "includes/login_header.php";
+//include "includes/login_header.php";
 //If the form wasn't submitted, or didn't validate
 //then we show the registration form again
+include "includes/Dash_header.php"; //TA:60:1
+include "includes/topbar.php"; //TA:60:1
 ?>
 	  <center>
 <div class="login_wrapper">
@@ -134,5 +136,9 @@ Last Name<input type="text" name="lastname" id="lastname" value="<?php echo $las
 
 <p style="margin-bottom:180px;">&nbsp;</p>
 </center>
+
+<?php
+ include "includes/footer.php"; 
+ ?>
 </body>
 </html>

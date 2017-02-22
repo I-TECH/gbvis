@@ -38,7 +38,7 @@ foreach ($indicator_results as $irows)
 //If the form wasn't submitted, or didn't validate
 //then we show the registration form again
 
-include "includes/header.php"; 
+include "includes/Dash_header.php";include "includes/topbar.php"; //TA:60:1 
 ?>
 	  <div id="sidebar">
 	  <center><h3 style="text-size:18px;   font-family: TStar-Bol"></h3></center>
@@ -48,7 +48,7 @@ include "includes/header.php";
 	  ?>
 	</div> 
 	  </div> 
-	  <div id="main-content">
+	  <div id="main-content_with_side_bar">
 	    <div id="bread-crumbs">
 	      <!--breadcrumbs-->
 	    </div>

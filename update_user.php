@@ -1,4 +1,4 @@
-<?php 
+<?php
 
   $page_title = "Add Aggreagtes| GBV";
     $current_page = "Update Aggreagtes";
@@ -17,7 +17,7 @@ $sectorname = $user->sector;
 $msg="";
 
 //check to see that the form has been submitted
-if(isset($_POST['submit-form'])) { 
+if(isset($_POST['submit-form'])) {
 
 	//retrieve the $_POST variables
 
@@ -33,12 +33,12 @@ if(isset($_POST['submit-form'])) {
 	$email = $_POST['email'];
 	$mobile_phone = $_POST['mobile_phone'];
 	$password = $_POST['password'];
-	
+
 
 	//initialize variables for form validation
-	  
+
 	    //prep the data for saving in a new user object
-	    
+
 	    $data['firstname'] = $firstname;
 	    $data['lastname'] = $lastname;
 	    $data['username'] = $username;
@@ -49,9 +49,9 @@ if(isset($_POST['submit-form'])) {
 	    $data['sector'] = $sector;
 	    $data['password'] = $password;
 	    //$data['join_date'] = $date_modified;
-	
+
 	    //create the new user object
-	  
+
 	      $data = array(
 			      "firstname" => "'$firstname'",
 				"lastname" => "'$lastname'",
@@ -62,16 +62,16 @@ if(isset($_POST['submit-form'])) {
 				"mobile_phone" => "'$mobile_phone'",
 				"sector" => "'$sector'",
 				//"join_date" => "'$this->date'"
-				
+
 			);
-			
+
 			//update the row in the database
 			$db->update($data, "users", "id = $userid");
-			
-	
-	   
+
+
+
 	    $msg = "User details updated successfully <br/> \n\r";
-	    
+
 	}
 
 //check to see that the form has been submitted
@@ -79,17 +79,17 @@ if(isset($_POST['submit-form'])) {
 //If the form wasn't submitted, or didn't validate
 //then we show the registration form again
 
-include "includes/header.php"; 
+include "includes/Dash_header.php";include "includes/topbar.php"; //TA:60:1
 ?>
 	  <div id="sidebar">
 	  <center><h3 style="text-size:18px;   font-family: TStar-Bol"></h3></center>
 	<div class="sidebar-nav">
 	<?php
-	  include "includes/sidebar.php"; 
+	  include "includes/sidebar.php";
 	  ?>
-	</div> 
-	  </div> 
-	  <div id="main-content">
+	</div>
+	  </div>
+	  <div id="main-content_with_side_bar">
 	    <div id="bread-crumbs">
 	      <!--breadcrumbs-->
 	    </div>
@@ -105,10 +105,10 @@ include "includes/header.php";
 
 </div>
 <br clear="all">
-</div> 		
-</div> 	
+</div>
+</div>
  <?php
- include "includes/footer.php"; 
+ include "includes/footer.php";
 	}
 else
 {

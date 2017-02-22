@@ -45,7 +45,7 @@ if(isset($_SESSION["VALID_USER_ID"]))
 	  ?>
 	</div> 
 	  </div> 
-	  <div id="main-content">
+	  <div id="main-content_with_side_bar">
 	    <div id="bread-crumbs">
 	      <!--breadcrumbs-->
 	    </div>

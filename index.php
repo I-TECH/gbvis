@@ -14,238 +14,190 @@ $user = unserialize($_SESSION['user']);
 
 
 include "includes/Dash_header.php"; 
+include "includes/topbar.php"; //TA:60:1
+
+$db = new DB();
+
+$health_aggregates_all = $db->select("health_aggregates", " indicator_id=3 and date >= DATE_SUB(NOW(),INTERVAL 1 YEAR)");
+$health_aggregates_total = 0;
+$health_male_more18 = 0;
+$health_male_less18 = 0;
+$health_female_more18 = 0;
+$health_female_less18 = 0;
+foreach ( $health_aggregates_all as $row ) {
+    $health_aggregates_total += $row['aggregate'];
+    if($row['gender'] === 'Male' || $row['gender'] === 'male'){
+        if($row['age_range'] === '0-11' || $row['age_range'] === '12-17'){
+            $health_male_less18 += $row['aggregate'];
+        }else{
+            $health_male_more18 += $row['aggregate'];
+        }
+    }else if($row['gender'] === 'Female' || $row['gender'] === 'female'){
+        if($row['age_range'] === '0-11' || $row['age_range'] === '12-17'){
+            $health_female_less18 += $row['aggregate'];
+        }else{
+            $health_female_more18 += $row['aggregate'];
+        }
+    }
+}
+
+$result = mysql_query("select counties.county_name, sum(police_aggregates.aggregate) as aggregate from police_aggregates 
+    join counties on police_aggregates.county_id=counties.county_id 
+    where indicator_id=24 and date >= DATE_SUB(NOW(),INTERVAL 1 YEAR) group by county_name");
+$police_aggregates_all=$db->processRowSet($result);
+
+$police_aggregates_total = 0;
+foreach ( $police_aggregates_all as $row ) {
+    $police_aggregates_total += $row['aggregate'];
+}
+
 ?>
-	  <div id="sidebar">
-	  <center><h3 style="text-size:18px;  font-family: TStar-Bol"></h3></center>
+
+ <!-- libs to upload chart as PNG-->
+    <script type="text/javascript" src="../UI/js/rgbcolor.js"></script> 
+<script type="text/javascript" src="../UI/js/canvg.js"></script>
+<script type="text/javascript" src="../UI/js/grChartImg.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+<script src="https://code.highcharts.com/maps/highmaps.js"></script>
+<script src="https://code.highcharts.com/maps/modules/data.js"></script>
+<script src="https://code.highcharts.com/mapdata/countries/us/us-all.js"></script>
+
+
+<script type="text/javascript">
+
+
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawPie);
+var chart;
+
+function drawPie() {
+
+  var data = google.visualization.arrayToDataTable([
+    ['Sector', 'Aggreagates'],
+    ['Police',     <?php echo $police_aggregates_total;?>],
+    ['Health facilities',      <?php echo $health_aggregates_total;?>],
+  ]);
+
+  var options = {
+    title: 'Total number of SGBV cases reported'
+  };
+
+  chart = new google.visualization.PieChart(document.getElementById('piechart'));
+  google.visualization.events.addListener(chart, 'select', getReportBySector);
+
+  chart.draw(data, options);
+}
+
+function getReportBySector(){
+	var sel_bar = chart.getSelection()[0];
+	if(sel_bar.row == '0'){
+		
+		var data_p = google.visualization.arrayToDataTable([
+		                                                  ['county', 'Aggregate'],
+		                                                  <?php 
+ 		                                                  foreach ( $police_aggregates_all as $row ) {
+    echo "['" . $row['county_name'] . "'," . $row['aggregate'] . "],";
+}
+?>
+		]);
+
+		var options = {title: 'Total number of SGBV cases reported to the police',
+				"legend":"none",
+				"width":1000,
+        		"height":500,
+				hAxis: {slantedText:true, slantedTextAngle:90,showTextEvery:1 }, //lebel vertical view and show all
+        		bar: {groupWidth: 20},
+        		chartArea : { left: 20, bottom: 80, right:20, height: '57%'} // do not cut off labels
+		                                             };
+
+	  var police_chart = new google.visualization.ColumnChart(document.getElementById('police_chart'));
+	  police_chart.draw(data_p, options);
+	}else{
+		var data = google.visualization.arrayToDataTable([
+		                                                  ['Group age', 'Male', 'Female'],
+		                                                  ['<18 years',     <?php echo $health_male_less18;?>, <?php echo $health_female_less18;?>],
+		                                                  ['>18 years',      <?php echo $health_male_more18;?>, <?php echo $health_female_more18;?>],
+		                                                ]);
+
+		var options = {title: 'Total number of SGBV cases reported to the Health Facilities',
+				vAxis: {minValue:0, maxValue: 5, format: '0'},
+				width:550,
+				height:500,
+		              };
+
+	  var health_chart = new google.visualization.ColumnChart(document.getElementById('health_chart'));
+	  health_chart.draw(data, options);
+	}
+	
+}
+
+</script>
+	
+	  
+	  <div id="sidebar">  
 	<div class="sidebar-nav">
 	<?php
-	  include "includes/sidebar.php"; 
+ 	  include "includes/sidebar.php"; 
 	  ?>
 	</div> 
 	  </div> 
-	  <div id="main-content">
-	    <div id="bread-crumbs">
-	      <!--breadcrumbs-->
-	      
-	    </div>
+	  <div id="main-content_with_side_bar">
+	    
         <div id="content-body">
-		<center><h3 class="page-title">Welcome to GBVIS</h3></center>
-	       <hr size="1" color="#CCCCCC">
+		<center><h2 class="page-title">Welcome to the National Sexual Gender Based Violence Information System (SGBVIS)</h2></center> <!-- TA:60:1 -->
+	      <hr size="1" color="#fff">
+	        <div class="container">
+	        	<h3>Overview</h3>
+<p>	        	
+Gender Based Violence is a human rights violation, developmental concern and a public health
+problem. According to the World Health Organization (WHO), GBV is “Any harmful act that is
+perpetrated against a person’s will and that is based on socially ascribed (gender) differences
+between males and females”. GBV includes acts that inflict physical, mental or sexual harm or
+suffering; the threat of such acts and coercion and other deprivations of liberty. The term
+‘Gender Based Violence’ is often used interchangeably with (but not synonymous to) the term
+‘violence against women’. The different forms of GBV include physical, sexual, emotional
+(psychological) and economic violence and harmful traditional practices.
+</p>
+<br/>
+<p>
+Despite existing data on GBV in Kenya, reporting has been a challenge due to underlying
+infrastructural impediments. This system was created to fill the gap and ease the burden of
+reporting SGBV cases.
+</p>
+<br/>
+<p>
+This system is an initial step towards reporting all GBV cases in Kenya to the national level for
+monitoring and begins by focusing on Sexual Gender Based Violence (SGBV). It collates data
+from various sectors including: Education, Health, Judiciary, Police and Prosecution.
+</p>
+	        </div>
 		   <div class="profile-data" align="left">
 		   
-		   <center>
-          <div id="dashboard" >
-			
-			<div id="dashboardTop"  >
-				<!--<h2>Main features</h2>-->
-			<section class="float_left">
-			  <table width="100%" border="0" align="center" cellspacing="1" class="table-hover" >
-			         <thead>
-                                   <th align="left" colspan="4" width="20px"><b><center>
-                                     Judiciary Sector
-                                   </center>
-                                   </b></th>
-                                
-                               </thead>
-                                <thead style="padding-left:5px;">
-                                  
-                                   <th align="left" ><b style="">Indicator</b></th>
-			           <th align="left"><b>Prosecuted </b></th>
-			            <th align="left"><b>Total </b></th>
-			           <th align="left"><b>Percentage(%) </b></th>
-                               </thead>
-                                 <?php   $result = mysql_query("SELECT * FROM viewsummarytriedcases");
-					
-						   while($ro = mysql_fetch_array($result)){  ?>
-        <tr bgcolor="#FFFFFF" >
-        <td><p style="padding-left:5px; font-size: 10px;"><?php echo $ro['indicator'];?></p></td>
-        <td><?php echo $ro['nationalTriedTotal'];?></td>
-         <td><?php echo $ro['nationalProsecutionTotal'];?></td>
-          <td><?php echo $ro['IndicatorPercentage'];?></td>
-        </tr>
-			     <?php } ?>    
-			    </table>
-		       </section>
-		    <section class="float_right">
-		     <script src="Highcharts/js/highcharts.js"></script>
-                     <script src="Highcharts/js/modules/exporting.js"></script>
+		   <!--  <div id="mapchart" style="width: 650px; height: 500px;"></div>-->
 
-                  <section id="container" style="min-width: 350px; height: 200px; max-width: 420px; margin: 0 auto"></section>
-		  
-		    </section>
-			</div>
-			<div id="dashboardBottom"  >
-				
-				<section class="float_left">
-				<table width="100%" border="0" align="center" cellspacing="1" class="table-hover" >
-			   <thead>
-                                   <th align="left" colspan="2" width="20px"><b><center>Health Sector</center></b></th>
-                                
-                               </thead>
-                                <thead style="padding-left:5px;">
-                                  
-                                   <th align="left" ><b style="padding-left:5px;">Indicator</b></th>
-			           <th align="left"><b>Aggregates </b></th>
-			           <!--<th align="left"><b>More</b></th>-->
-                               </thead>
-                               <?php   $result = mysql_query("SELECT * FROM viewhealthsummary a  inner join indicators_titles b
-On a.indicator_id=b.titleid");
-					
-						   while($ro = mysql_fetch_array($result)){  ?>
-        <tr bgcolor="#FFFFFF" ><td><p style="padding-left:5px;"><?php echo $ro['title'];?></p></td><td><?php echo $ro['Aggregates'];?></td></tr>
-			     <?php } ?>    
-			       
-			    </table>
-					
-				</section>
-				<section class="float_right">
-				 <center>
-                                     Top 5 Counties
-                                   </center>
-				 <section class="float_right_section1">
-		     	  	  <table width="100%" border="0" align="center" cellspacing="1" class="table-hover" >
-			         <thead>
-                                   <th align="left" colspan="2" width="20px"><b><center>
-                                     Number of health cases reported
-                                   </center>
-                                   </b></th>
-                                
-                               </thead>
-                                <thead style="padding-left:5px;">
-                                  
-                                   <th align="left" ><b style="padding-left:5px;">County</b></th>
-			           <th align="left"><b>Aggreagates </b></th>
-			           <!--<th align="left"><b>More</b></th>-->
-                               </thead>
-                              <?php   $result = mysql_query("SELECT * FROM viewtop5healthcasesreported");
-					
-						   while($ro = mysql_fetch_array($result)){  ?>
-        <tr bgcolor="#FFFFFF" ><td><p style="padding-left:5px;"><?php echo $ro['county'];?></p></td><td><?php echo $ro['countyAggregate'];?></td></tr>
-			     <?php } ?>    
-			    </table>
-		     </section>
-		    <section class="float_right_section2">
-		    	  <table width="100%" border="0" align="center" cellspacing="1" class="table-hover" >
-			         <thead>
-                                   <th align="left" colspan="2" width="20px"><b><center>Number of service providers trained</center></b></th>
-                                
-                               </thead>
-                                <thead style="padding-left:5px;">
-                                  
-                                   <th align="left" ><b style="padding-left:5px;">County</b></th>
-			           <th align="left"><b>Aggreagates </b></th>
-			           <!--<th align="left"><b>More</b></th>-->
-                               </thead>
-                                 <?php   $result = mysql_query("SELECT * FROM viewtop5serviceproviderstrained");
-					
-						   while($ro = mysql_fetch_array($result)){  ?>
-        <tr bgcolor="#FFFFFF" ><td><p style="padding-left:5px;"><?php echo $ro['county'];?></p></td><td><?php echo $ro['countyAggregate'];?></td></tr>
-			     <?php } ?>    
-			    </table>
-		    </section>
-		    
-		     <section class="float_right_section3">
-		    	  <table width="100%" border="0" align="center" cellspacing="1" class="table-hover" >
-			         <thead>
-                                   <th align="left" colspan="2" width="20px"><b><center>
-                                     Survivors initiated on PEP
-                                   </center>
-                                   </b></th>
-                                
-                               </thead>
-                                <thead style="padding-left:5px;">
-                                  
-                                   <th align="left" ><b style="padding-left:5px;">County</b></th>
-			           <th align="left"><b>Aggreagates </b></th>
-			           <!--<th align="left"><b>More</b></th>-->
-                               </thead>
-                              
-                                 <?php   $result = mysql_query("SELECT * FROM viewtop5pepinitiated");
-					
-						   while($ro = mysql_fetch_array($result)){  ?>
-        <tr bgcolor="#FFFFFF" ><td><p style="padding-left:5px;"><?php echo $ro['county'];?></p></td><td><?php echo $ro['countyAggregate'];?></td></tr>
-			     <?php } ?>    
-			    </table>
-		    </section>
-		    <section class="float_right_section4">
-		    	  <table width="100%" border="0" align="center" cellspacing="1" class="table-hover" >
-			         <thead>
-                                   <th align="left" colspan="2" ><b><center>
-                                     Survivors who have completed PEP
-                                   </center></b></th>
-                                
-                               </thead>
-                                <thead style="padding-left:5px;">
-                                  
-                                   <th align="left" ><b style="padding-left:5px;">County</b></th>
-			           <th align="left"><b>Aggreagates </b></th>
-			           <!--<th align="left"><b>More</b></th>-->
-                               </thead>
-                               <?php   $result = mysql_query("SELECT * FROM viewtop5pepcompleted");
-					
-						   while($ro = mysql_fetch_array($result)){  ?>
-        <tr bgcolor="#FFFFFF" ><td><p style="padding-left:5px;"><?php echo $ro['county'];?></p></td><td><?php echo $ro['countyAggregate'];?></td></tr>
-			     <?php } ?>    
-			    </table>
-		          </section>
 		   
-				</section>
-				<section class="float_left">
-				<table width="100%" border="0" align="center" cellspacing="1" class="table-hover" >
-			   <thead>
-                                   <th align="left" colspan="2" width="20px"><b><center>Police Sector</center></b></th>
-                                
-                               </thead>
-                               <?php   $result = mysql_query("select b.title,a.aggregates from viewpolicesummary a
-inner join indicators_titles b on a.indicator_id=b.titleid");
-					
-						   while($ro = mysql_fetch_array($result)){  ?>
-        <tr bgcolor="#FFFFFF" ><td><p style="padding-left:5px;"><?php echo $ro['title'];?></p></td><td><?php echo $ro['aggregates'];?></td></tr>
-			     <?php } ?>    
-			    </table>
-				</section>
-				<section class="float_right">
-				<table width="100%" border="0" align="center" cellspacing="1" class="table-hover" >
-			         <thead>
-                                   <th align="left" colspan="2" width="20px"><b><center>Number of sgbv cases reported to police</center></b></th>
-                                
-                               </thead>
-                                <thead style="padding-left:5px;">
-                                  
-                                   <th align="left" ><b style="padding-left:5px; ">County</b></th>
-			           <th align="left"><b>Aggreagates </b></th>
-			           <!--<th align="left"><b>More</b></th>-->
-                               </thead>
-                             <?php   $result = mysql_query("SELECT * FROM viewtop5casesreported");
-					
-						   while($ro = mysql_fetch_array($result)){  ?>
-        <tr bgcolor="#FFFFFF" ><td><p style="padding-left:5px; font-size: 9px;"><?php echo $ro['county'];?></p></td><td><?php echo $ro['countyTotal'];?></td></tr>
-			     <?php } ?>  
-			    </table>
-				</section>
-				
-				
-				</div>
-				
-				</div>
-				
-	         <a href="moreDashboard.php" align="left" style="font-family:Verdana, Geneva, sans-serif; font-size:15px; color:#3E1F60; text-decoration:none;padding-right:2px;">More Summary</a>     
+		   <!-- <div id="piechart" style="width: 650px; height: 500px;"></div>
+		   <div id='health_chart'></div>
+		   <div id='police_chart'></div> -->
+				   
           </div>     
-        </center>
+       
 		   
 		   
       <br clear="all">
 
 </div><br clear="all">
-</center>
+
 	    </div> 		
 	 	
  <?php
  include "includes/footer.php"; 
-	}
-else
-{
+	}else{
 	//Redirect user back to login page if there is no valid session created
 	header("Location: login.php");
 }
 ?>
+
+

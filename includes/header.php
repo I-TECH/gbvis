@@ -30,7 +30,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
 <link href="UI/css/style.css" rel="stylesheet" type="text/css">
-<link href="UI/css/style2.css" rel="stylesheet" type="text/css">
+<link href="UI/css/style.css" rel="stylesheet" type="text/css">
 <link href="UI/css/login_style.css" rel="stylesheet" type="text/css">
 <link href="UI/css/popupcss.css" rel="stylesheet" type="text/css">
 <link href="UI/css/popup.css" rel="stylesheet" type="text/css">
