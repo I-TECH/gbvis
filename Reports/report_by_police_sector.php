@@ -933,7 +933,7 @@ function dataTableToCSV(dataTable_arg) {
 		       	data_table.addColumn('string', '');
         	data_table.addColumn('number', 'Total cases reported');
         	data_table.addColumn('number', 'Cases investigated');
-        	data_table.addColumn('number', 'Cases not investigated');
+        	data_table.addColumn('number', 'Cases pending under investigation');
         	data_table.addColumn('number', 'Proportion of cases <br>investigated');
         	<?php
         	$proportion = 0;
@@ -954,7 +954,7 @@ function dataTableToCSV(dataTable_arg) {
 			chart_data = [
 			              ['Name', 'Proportion'],
 			              ['Cases investigated',<?php echo $cases_investigated  ;?>],
-			              ['Cases not investigated',<?php echo $cases_notinvestigated  ;?>]
+			              ['Cases pending under investigation',<?php echo $cases_notinvestigated  ;?>]
 			           ];
 			
             data_chart = google.visualization.arrayToDataTable(chart_data);
